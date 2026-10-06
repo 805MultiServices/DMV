@@ -1,0 +1,311 @@
+{
+ "template": "templates/256.pdf",
+ "mode": "fill",
+ "note": "Mismo orden de parámetros que gabodocs.ray.mx/overlay-256 (a7=texto sección G, a11=lada, a12=teléfono)",
+ "fields": {
+  "a1": {
+   "field": "License Plate/CF Number",
+   "label": "Placa (aparece en las 2 hojas)"
+  },
+  "a2": {
+   "field": "Veh/Vessel ID Number",
+   "label": "VIN (2 hojas)"
+  },
+  "a3": {
+   "field": "Year/Make2",
+   "label": "Año / Marca (2 hojas)"
+  },
+  "a4": {
+   "field": "License Plate/CF Number",
+   "label": "alias de a1"
+  },
+  "a5": {
+   "field": "Veh/Vessel ID Number",
+   "label": "alias de a2"
+  },
+  "a6": {
+   "field": "Year/Make2",
+   "label": "alias de a3"
+  },
+  "a7": {
+   "field": "g. undersigned state",
+   "label": "G: texto I, the undersigned, state: (ERROR_EN_TITULO)"
+  },
+  "a8": {
+   "field": "Current Market Value 1",
+   "label": "A: valor de mercado actual"
+  },
+  "a9": {
+   "field": "PRINTED NAME",
+   "label": "H: apellido (o nombre completo si no usas a10/a11)"
+  },
+  "a10": {
+   "field": "FIRST NAME",
+   "label": "H: nombre"
+  },
+  "a11": {
+   "field": "App sign area code",
+   "label": "H: lada (3 dígitos)"
+  },
+  "a12": {
+   "field": "App sign phone no",
+   "label": "H: teléfono (7 dígitos)"
+  },
+  "a13": {
+   "field": "Signature date",
+   "label": "H: fecha"
+  },
+  "a14": {
+   "field": "MIDDLE NAME",
+   "label": "H: segundo nombre"
+  },
+  "a15": {
+   "field": "Family transfer box",
+   "type": "check",
+   "label": "A: Family transfer"
+  },
+  "a16": {
+   "field": "addition/deletion box",
+   "type": "check",
+   "label": "A: Addition/deletion of family member"
+  },
+  "a17": {
+   "field": "gift box",
+   "type": "check",
+   "label": "A: Gift"
+  },
+  "a18": {
+   "field": "Court order box",
+   "type": "check",
+   "label": "A: Court order"
+  },
+  "a19": {
+   "field": "inheritance box",
+   "type": "check",
+   "label": "A: Inheritance"
+  },
+  "a20": {
+   "field": "Biennial Smog cert box",
+   "type": "check",
+   "label": "B: smog en últimos 90 días"
+  },
+  "a21": {
+   "field": "Powered by box",
+   "type": "check",
+   "label": "B: powered by (casilla)"
+  },
+  "a22": {
+   "field": "Powered by electricity box",
+   "type": "check",
+   "label": "B: electricity"
+  },
+  "a23": {
+   "field": "Powered by diesel box",
+   "type": "check",
+   "label": "B: diesel"
+  },
+  "a24": {
+   "field": "Powered by other box",
+   "type": "check",
+   "label": "B: other"
+  },
+  "a25": {
+   "field": "Powered by other 2",
+   "label": "B: other (texto)"
+  },
+  "a26": {
+   "field": "Located outside CA box.0",
+   "type": "check",
+   "label": "B: ubicado fuera de California"
+  },
+  "a27": {
+   "field": "Located outside CA box.1",
+   "type": "check",
+   "label": "B: 'being transferred from/between' (casilla)"
+  },
+  "a28": {
+   "field": "Paren, grandparent, etc box",
+   "type": "check",
+   "label": "B: padre/abuelo/hijo/cónyuge..."
+  },
+  "a29": {
+   "field": "Companies leasing vehicle box",
+   "type": "check",
+   "label": "B: sole proprietorship -> propietario"
+  },
+  "a30": {
+   "field": "Lessor/Lessee of vehicle box",
+   "type": "check",
+   "label": "B: compañías de leasing"
+  },
+  "a31": {
+   "field": "Lessor/lessee operator box",
+   "type": "check",
+   "label": "B: lessor y lessee, sin cambio"
+  },
+  "a32": {
+   "field": "Individual as registered own box.0",
+   "type": "check",
+   "label": "B: lessor y operador ≥ 1 año"
+  },
+  "a33": {
+   "field": "Individual as registered own box.1",
+   "type": "check",
+   "label": "B: individuo(s) agregado(s) como propietario(s)"
+  },
+  "a34": {
+   "field": "Transfer only box",
+   "type": "check",
+   "label": "C: Transfer only"
+  },
+  "a35": {
+   "field": "Title only box",
+   "type": "check",
+   "label": "C: Title only"
+  },
+  "a36": {
+   "field": "Disabled Person Plate",
+   "label": "D: placa discapacitado"
+  },
+  "a37": {
+   "field": "Disabled Vet Plate",
+   "label": "D: placa veterano discapacitado"
+  },
+  "a38": {
+   "field": "Disabled Person Placard",
+   "label": "D: placard permanente"
+  },
+  "a39": {
+   "field": "Window decal-License No",
+   "label": "D: placa del vehículo"
+  },
+  "a40": {
+   "field": "Window decal-Vehicle Make",
+   "label": "D: marca"
+  },
+  "a41": {
+   "field": "Window decal-Veh ID No",
+   "label": "D: VIN"
+  },
+  "a42": {
+   "field": "Mail to-Name",
+   "label": "D: enviar a - nombre"
+  },
+  "a43": {
+   "field": "Mail to-Address",
+   "label": "D: dirección"
+  },
+  "a44": {
+   "field": "Mail to-City",
+   "label": "D: ciudad"
+  },
+  "a45": {
+   "field": "Mail to-State",
+   "label": "D: estado (2 letras)"
+  },
+  "a46": {
+   "field": "Mail to-Zip",
+   "label": "D: ZIP"
+  },
+  "a47": {
+   "field": "E. Market value of vehicle or vessel",
+   "label": "E: valor de mercado"
+  },
+  "a48": {
+   "field": "E. Cost of changes",
+   "label": "E: costo de los cambios"
+  },
+  "a49": {
+   "field": "E. Date changes made",
+   "label": "E: fecha de los cambios"
+  },
+  "a50": {
+   "field": "E. Unladen weight box",
+   "type": "check",
+   "label": "E: unladen weight (casilla)"
+  },
+  "a51": {
+   "field": "UNLADEN WEIGHT",
+   "label": "E: unladen weight: motivo"
+  },
+  "a52": {
+   "field": "E. Motive power box",
+   "type": "check",
+   "label": "E: motive power (casilla)"
+  },
+  "a53": {
+   "field": "E. Motive power changed from",
+   "label": "E: motive power DE"
+  },
+  "a54": {
+   "field": "E. Motive power changed to",
+   "label": "E: motive power A"
+  },
+  "a55": {
+   "field": "E. Body type box",
+   "type": "check",
+   "label": "E: body type (casilla)"
+  },
+  "a56": {
+   "field": "E. Body type changed from",
+   "label": "E: body type DE"
+  },
+  "a57": {
+   "field": "E. Body power changed to",
+   "label": "E: body type A"
+  },
+  "a58": {
+   "field": "E. No of axles box",
+   "type": "check",
+   "label": "E: ejes (casilla)"
+  },
+  "a59": {
+   "field": "E. No axles changed from",
+   "label": "E: ejes DE"
+  },
+  "a60": {
+   "field": "E. No axles changed to",
+   "label": "E: ejes A"
+  },
+  "a61": {
+   "field": "F. I/We same person box",
+   "type": "check",
+   "label": "F: 'same person' (casilla)"
+  },
+  "a62": {
+   "field": "F. I, name",
+   "label": "F: nombre 1"
+  },
+  "a63": {
+   "field": "F. and are same person",
+   "label": "F: nombre 2"
+  },
+  "a64": {
+   "field": "F. Name mispelled box",
+   "type": "check",
+   "label": "F: nombre mal escrito (casilla)"
+  },
+  "a65": {
+   "field": "F. Name misspelled",
+   "label": "F: corregir a"
+  },
+  "a66": {
+   "field": "F. Changing name box",
+   "type": "check",
+   "label": "F: cambio de nombre (casilla)"
+  },
+  "a67": {
+   "field": "F. changing name from",
+   "label": "F: de"
+  },
+  "a68": {
+   "field": "F. Changing name to",
+   "label": "F: a"
+  }
+ },
+ "remove": [
+  "click",
+  "click to",
+  "click to 1"
+ ]
+}

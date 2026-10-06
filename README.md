@@ -158,6 +158,24 @@ Las secciones A–D están en la hoja 1 y E–H en la hoja 2. Placa, VIN y Año/
 | `a67` | F: de |
 | `a68` | F: a |
 
+## `overlay-256` (compatible con las ligas de gabodocs)
+
+Mismo formulario REG 256, pero con el orden de parámetros de `gabodocs.ray.mx/overlay-256`, para no cambiar las fórmulas de AppSheet:
+
+| Param | Qué es |
+|---|---|
+| `a1`–`a6` | Placa, VIN, Año / Marca (se repiten; salen en las 2 hojas) |
+| `a7` | Sección G: "I, the undersigned, state:" (ERROR_EN_TITULO) |
+| `a8` | A: valor de mercado actual |
+| `a9` | H: nombre impreso |
+| `a10` | H: nombre |
+| `a11` | H: lada (3 dígitos) |
+| `a12` | H: teléfono (555-1234) |
+| `a13` | H: fecha |
+| `a14` | H: segundo nombre |
+
+Las casillas y demás secciones (`a15` en adelante) son iguales que en `fill-256`.
+
 > **Nota sobre la sección B del 256:** en el PDF original los nombres internos de varios checkboxes están corridos respecto al renglón que tienen al lado. El mapa ya está corregido por posición visual.
 
 ## Privacidad

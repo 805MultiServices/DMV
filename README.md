@@ -25,7 +25,7 @@ Valores vacíos o `-` se ignoran.
 
 `docs` es la lista de documentos en el orden en que salen. Cada parámetro lleva adelante el número del documento al que va: `1_a9` es el `a9` del primero (256), `2_a4` el `a4` del segundo (101 del vendedor), `3_a4` el del tercero (101 del comprador). El PDF sale editable; los campos de cada formulario quedan agrupados (`d1.`, `d2.`, `d3.`) para que los dos 101 no se mezclen. `&final=1`, `&download=1` y `&name=` funcionan igual.
 
-`&duplex=1` agrega una hoja en blanco después de cada documento con número impar de páginas (menos el último), para imprimir a doble cara con cada documento en su propia hoja. Con `overlay-256,fill-101,fill-101` quedan 5 páginas: 256 (frente y vuelta), 101 del vendedor, blanca, 101 del comprador.
+Por defecto se agrega una hoja en blanco después de cada documento con número impar de páginas (menos el último), para imprimir a doble cara con cada documento en su propia hoja. Con `overlay-256,fill-101,fill-101` quedan 5 páginas: 256 (frente y vuelta), 101 del vendedor, blanca, 101 del comprador. `&duplex=0` la quita.
 
 Prueba desde la terminal: `node tools/test-paquete.js "docs=...&1_a1=..." salida.pdf`
 

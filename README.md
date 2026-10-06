@@ -176,6 +176,8 @@ Mismo formulario REG 256, pero con el orden de parámetros de `gabodocs.ray.mx/o
 
 Las casillas y demás secciones (`a15` en adelante) son iguales que en `fill-256`.
 
+**Nombre en la sección H:** si `a10` (nombre) viene vacío, el campo de `a9` se alarga para cubrir "Printed last name" y "First name" juntos, así cabe el nombre completo. Si llega `a10`, cada parte va en su campo. En cualquier campo de una línea, si el texto no cabe, la letra se reduce sola (mínimo 6 pt) en vez de cortarse.
+
 > **Nota sobre la sección B del 256:** en el PDF original los nombres internos de varios checkboxes están corridos respecto al renglón que tienen al lado. El mapa ya está corregido por posición visual.
 
 ## Privacidad

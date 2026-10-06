@@ -306,5 +306,12 @@
   "click",
   "click to",
   "click to 1"
+ ],
+ "stretch": [
+  {
+   "field": "PRINTED NAME",
+   "to": "FIRST NAME",
+   "unless": "a10"
+  }
  ]
 }

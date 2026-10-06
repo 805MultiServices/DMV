@@ -35,6 +35,16 @@
       return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^\x20-\x7E\xA0-\xFF]/g, "?");
     }
   };
+  // Si el texto no cabe en el campo (una sola línea), reduce la letra hasta que quepa (mín. 6 pt)
+  function fitText(f, txt, font) {
+    if (!(f instanceof PDFTextField) || f.isMultiline() || f.isCombed()) return;
+    const m = /([\d.]+)\s+Tf/.exec(f.acroField.getDefaultAppearance() || "");
+    const size = m ? parseFloat(m[1]) : 0;
+    if (!size) return;                                  // 0 = tamaño automático del visor
+    const w = f.acroField.getWidgets()[0].getRectangle().width - 4;   // margen interno
+    const need = font.widthOfTextAtSize(txt, size);
+    if (need > w) f.setFontSize(Math.max(6, Math.floor((size * w / need) * 10) / 10));
+  }
   const truthy = (v) => /^(1|true|x|si|sí|yes|on)$/i.test(String(v).trim());
 
   /**
@@ -56,6 +66,22 @@
       form.getFields().forEach((f) => (byName[f.getName()] = f));
       const find = (n) => byName[n] || byName[n.replace(/\\+/g, "\\")] ||
         Object.values(byName).find((f) => f.getName().replace(/\\/g, "") === n.replace(/\\/g, ""));
+
+      // "stretch": alarga un campo hasta cubrir el de al lado cuando ese parámetro viene vacío
+      // (p. ej. apellido + nombre juntos en "PRINTED NAME" si no llega a10)
+      (map.stretch || []).forEach((st) => {
+        const u = get(st.unless);
+        if (u != null && String(u).trim() !== "" && String(u).trim() !== "-") return;
+        const a = find(st.field), b = find(st.to);
+        if (!a || !b) return;
+        const end = b.acroField.getWidgets()[0].getRectangle();
+        a.acroField.getWidgets().forEach((w) => {
+          const r = w.getRectangle();
+          w.setRectangle({ x: r.x, y: r.y, width: end.x + end.width - r.x, height: r.height });
+        });
+        b.defaultUpdateAppearances(font);   // la plantilla no trae apariencia; pdf-lib la necesita para quitarlo
+        form.removeField(b);                // el campo cubierto ya no se usa en este PDF
+      });
 
       for (const [key, spec] of Object.entries(map.fields)) {
         let v = get(key);
@@ -83,7 +109,9 @@
                 const hit = o.find((x) => x.trim().toUpperCase() === v.toUpperCase());
                 if (hit) f.select(hit); else log.push(`${key}: "${v}" no está en la lista de ${n}`);
               } else {
-                f.setText(safe(v, font));
+                const txt = safe(v, font);
+                f.setText(txt);
+                fitText(f, txt, font);
               }
             });
           }

@@ -1,0 +1,202 @@
+{
+ "template": "templates/101.pdf",
+ "mode": "fill",
+ "fields": {
+  "a1": {
+   "field": "Veh Lic Plate/Ves CF",
+   "label": "Placa (sección superior)"
+  },
+  "a2": {
+   "field": "VIN",
+   "label": "VIN (superior)"
+  },
+  "a3": {
+   "field": "Make Veh/Ves",
+   "label": "Marca (superior)"
+  },
+  "a4": {
+   "field": "Reg Owner Name-1",
+   "label": "Propietario 1: APELLIDO, NOMBRE, 2o NOMBRE"
+  },
+  "a5": {
+   "type": "chars",
+   "field": [
+    "DL/ID No 1 -1",
+    "DL/ID No 1- 2",
+    "DL/ID No 1- 3",
+    "DL/ID No 1- 4",
+    "DL/ID No 1- 5",
+    "DL/ID No 1- 6",
+    "DL/ID No 1- 7",
+    "DL/ID No 1- 8"
+   ],
+   "label": "Licencia/ID propietario 1 (8 casillas)"
+  },
+  "a7": {
+   "field": "Reg Own Address",
+   "label": "Dirección del propietario"
+  },
+  "a8": {
+   "field": "Reg Own Name 2",
+   "label": "Propietario 2"
+  },
+  "a9": {
+   "type": "chars",
+   "field": [
+    "DL/ID No 2 -1",
+    "DL/ID No 2- 2",
+    "DL/ID No 2- 3",
+    "DL/ID No 2- 4",
+    "DL/ID No 2- 5",
+    "DL/ID No 2- 6",
+    "DL/ID No 2- 7",
+    "DL/ID No 2- 8"
+   ],
+   "label": "Licencia/ID propietario 2 (8 casillas)"
+  },
+  "a10": {
+   "field": "Reg Own Name 3",
+   "label": "Propietario 3"
+  },
+  "a11": {
+   "type": "chars",
+   "field": [
+    "DL/ID No 3 -1",
+    "DL/ID No 3- 2",
+    "DL/ID No 3- 3",
+    "DL/ID No 3- 4",
+    "DL/ID No 3- 5",
+    "DL/ID No 3- 6",
+    "DL/ID No 3- 7",
+    "DL/ID No 3- 8"
+   ],
+   "label": "Licencia/ID propietario 3 (8 casillas)"
+  },
+  "a12": {
+   "type": "choice",
+   "options": {
+    "AND": "And 1",
+    "OR": "Or 1"
+   },
+   "label": "Conector prop.1->2: AND u OR"
+  },
+  "a13": {
+   "type": "choice",
+   "options": {
+    "AND": "And 2",
+    "OR": "Or 2"
+   },
+   "label": "Conector prop.2->3: AND u OR"
+  },
+  "a15": {
+   "field": "Reg Own City",
+   "label": "Ciudad"
+  },
+  "a16": {
+   "field": "Reg Own States",
+   "label": "Estado (CA, TX...)"
+  },
+  "a17": {
+   "field": "Reg Own Zip",
+   "label": "ZIP"
+  },
+  "a18": {
+   "field": "Reg Own Purchase Date",
+   "label": "Fecha de compra"
+  },
+  "a19": {
+   "field": "Reg Own Purchase Price",
+   "label": "Precio de compra (sin $)"
+  },
+  "a21": {
+   "field": "Lienholder Name 1",
+   "label": "Lienholder: nombre"
+  },
+  "a22": {
+   "field": "Lienholder Address 1",
+   "label": "Lienholder: dirección"
+  },
+  "a23": {
+   "field": "Lienholder City 1",
+   "label": "Lienholder: ciudad"
+  },
+  "a24": {
+   "field": "Lienholder States 1",
+   "label": "Lienholder: estado"
+  },
+  "a25": {
+   "field": "Lienholder Zip 1",
+   "label": "Lienholder: ZIP"
+  },
+  "a26": {
+   "field": "Leased Veh",
+   "type": "check",
+   "label": "Casilla 'FOR LEASED VEHICLES ONLY'"
+  },
+  "a27": {
+   "field": "Vessel only",
+   "type": "check",
+   "label": "Casilla 'FOR VESSELS ONLY'"
+  },
+  "a28": {
+   "field": "Lienholder Address 2",
+   "label": "Lessee/vessel: dirección"
+  },
+  "a29": {
+   "field": "Lienholder City 2",
+   "label": "Lessee/vessel: ciudad"
+  },
+  "a30": {
+   "field": "Lienholder States 1\\2",
+   "label": "Lessee/vessel: estado"
+  },
+  "a31": {
+   "field": "Veh Lic Plate/Ves CF 2",
+   "label": "Placa (Error/Erasure)"
+  },
+  "a32": {
+   "field": "VIN 2",
+   "label": "VIN (Error/Erasure)"
+  },
+  "a33": {
+   "field": "Make Veh/Ves 2",
+   "label": "Marca (Error/Erasure)"
+  },
+  "a34": {
+   "field": "erased line",
+   "label": "Número de línea borrada"
+  },
+  "a35": {
+   "field": "Reason for error erasure",
+   "label": "Razón del error"
+  },
+  "a36": {
+   "field": "Signature date 2",
+   "label": "Fecha de firma"
+  },
+  "a37": {
+   "field": "Erasure-Erro Address 2",
+   "label": "Dirección (Error/Erasure)"
+  },
+  "a38": {
+   "field": "Erasure-Error City 2",
+   "label": "Ciudad (Error/Erasure)"
+  },
+  "a39": {
+   "field": "Erasure-Error States ",
+   "label": "Estado (Error/Erasure)"
+  },
+  "a40": {
+   "field": "Erasure-Error Area Code",
+   "label": "Teléfono: lada (3 dígitos)"
+  },
+  "a41": {
+   "field": "Erasure-error Phone",
+   "label": "Teléfono: número"
+  },
+  "a42": {
+   "field": "Lienholder Zip 2",
+   "label": "Lessee/vessel: ZIP"
+  }
+ }
+}

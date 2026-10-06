@@ -1,0 +1,8 @@
+[[redirects]]
+  from = "/fill-*"
+  to = "/index.html"
+  status = 200
+[[redirects]]
+  from = "/overlay-*"
+  to = "/index.html"
+  status = 200

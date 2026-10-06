@@ -144,6 +144,64 @@
     return { bytes: await pdf.save(), log };
   }
 
-  const api = { buildPdf };
+  /**
+   * Une varios documentos en un solo PDF, conservando los campos editables.
+   * Cada documento se agrupa bajo un campo padre "d1", "d2"... para que los nombres
+   * repetidos (p. ej. dos REG 101) no choquen entre sí.
+   * @param {{bytes:Uint8Array}[]} parts  PDFs ya generados por buildPdf (sin aplanar o aplanados)
+   */
+  async function mergePdfs(parts) {
+    const { PDFObjectCopier, PDFArray, PDFRef } = PDFLib;
+    const out = await PDFDocument.create();
+    const ctx = out.context;
+    const fieldsArr = ctx.obj([]);
+    let dr = null;
+
+    for (let i = 0; i < parts.length; i++) {
+      const src = await PDFDocument.load(parts[i].bytes);
+      const pages = await out.copyPages(src, src.getPageIndices());
+      const roots = new Map();
+      pages.forEach((pg) => {
+        out.addPage(pg);
+        const annots = pg.node.Annots();
+        if (!annots) return;
+        for (let k = 0; k < annots.size(); k++) {
+          const ref = annots.get(k);
+          let node = ctx.lookup(ref), nodeRef = ref;
+          // al aplanar, pdf-lib puede dejar referencias a widgets ya borrados: se saltan
+          if (!(node instanceof PDFDict) || node.get(PDFName.of("Subtype"))?.toString() !== "/Widget") continue;
+          // subir hasta el campo raíz
+          while (node.get(PDFName.of("Parent"))) {
+            nodeRef = node.get(PDFName.of("Parent"));
+            node = ctx.lookup(nodeRef, PDFDict);
+          }
+          if (nodeRef instanceof PDFRef) roots.set(nodeRef.toString(), nodeRef);
+        }
+      });
+      if (roots.size) {
+        const parentRef = ctx.register(ctx.obj({ T: PDFLib.PDFString.of("d" + (i + 1)), Kids: [...roots.values()] }));
+        roots.forEach((r) => ctx.lookup(r, PDFDict).set(PDFName.of("Parent"), parentRef));
+        fieldsArr.push(parentRef);
+      }
+      // Recursos de fuentes del formulario (HeBo, ZaDb, ...) del primer documento con formulario
+      const srcAf = src.catalog.lookup(PDFName.of("AcroForm"), PDFDict);
+      if (srcAf && srcAf.lookup(PDFName.of("DR"))) {
+        const copied = PDFObjectCopier.for(src.context, ctx).copy(srcAf.lookup(PDFName.of("DR")));
+        if (!dr) dr = copied;
+        else {   // juntar fuentes de los demás
+          const f1 = dr.lookup(PDFName.of("Font"), PDFDict), f2 = copied.lookup(PDFName.of("Font"), PDFDict);
+          if (f1 && f2) f2.keys().forEach((k) => { if (!f1.has(k)) f1.set(k, f2.get(k)); });
+        }
+      }
+    }
+    if (fieldsArr.size()) {
+      const af = ctx.obj({ Fields: fieldsArr, DA: PDFLib.PDFString.of("/HeBo 0 Tf 0 g") });
+      if (dr) af.set(PDFName.of("DR"), dr);
+      out.catalog.set(PDFName.of("AcroForm"), ctx.register(af));
+    }
+    return await out.save();
+  }
+
+  const api = { buildPdf, mergePdfs };
   if (typeof module !== "undefined") module.exports = api; else root.DocFiller = api;
 })(typeof window !== "undefined" ? window : globalThis);

@@ -197,6 +197,10 @@
   "a42": {
    "field": "Lienholder Zip 2",
    "label": "Lessee/vessel: ZIP"
+  },
+  "a14": {
+   "field": "Reg Own Address",
+   "label": "Dirección del propietario (orden gabodocs; igual que a7)"
   }
  }
 }

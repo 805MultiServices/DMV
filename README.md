@@ -17,6 +17,16 @@ El PDF sale **editable**: los campos quedan prellenados y se pueden corregir en 
 Opciones extra: `&edit=0` o `&final=1` (lo entrega cerrado, sin campos editables), `&download=1` (descarga directa), `&name=mi-archivo`.
 Valores vacíos o `-` se ignoran.
 
+## Paquete: varios formularios en un solo PDF
+
+```
+?docs=overlay-256,fill-101,fill-101&1_a1=...&2_a1=...&3_a1=...
+```
+
+`docs` es la lista de documentos en el orden en que salen. Cada parámetro lleva adelante el número del documento al que va: `1_a9` es el `a9` del primero (256), `2_a4` el `a4` del segundo (101 del vendedor), `3_a4` el del tercero (101 del comprador). El PDF sale editable; los campos de cada formulario quedan agrupados (`d1.`, `d2.`, `d3.`) para que los dos 101 no se mezclen. `&final=1`, `&download=1` y `&name=` funcionan igual.
+
+Prueba desde la terminal: `node tools/test-paquete.js "docs=...&1_a1=..." salida.pdf`
+
 ## Estructura
 
 ```
@@ -58,6 +68,7 @@ Tipos de entrada en el mapa: texto (por defecto), `"type":"check"` (casilla), `"
 | `a11` | Licencia/ID propietario 3 (8 casillas) |
 | `a12` | Conector prop.1->2: AND u OR |
 | `a13` | Conector prop.2->3: AND u OR |
+| `a14` | Dirección (igual que `a7`; es el orden que usan las ligas de gabodocs) |
 | `a15` | Ciudad |
 | `a16` | Estado (CA, TX...) |
 | `a17` | ZIP |

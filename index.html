@@ -25,28 +25,50 @@
   const $ = (id) => document.getElementById(id);
   const params = new URLSearchParams(location.search);
 
-  // Documento: ?doc=fill-101  ó  ruta /fill-101 (con vercel.json / netlify)
+  // Un documento: ?doc=fill-101  ó  ruta /fill-101 (con vercel.json / netlify)
+  // Paquete:       ?docs=overlay-256,fill-101,fill-101  con parámetros 1_a1, 2_a1, 3_a1...
+  const docs = (params.get("docs") || "").split(",").map((d) => d.trim()).filter(Boolean);
   const doc = params.get("doc") || location.pathname.split("/").filter(Boolean).pop() || "";
-  try {
-    if (!/^(fill|overlay)-[a-z0-9_-]+$/i.test(doc)) {
-      $("msg").innerHTML = "Uso: <code>?doc=fill-101&amp;a1=…&amp;a2=…</code><br>Documentos: <code>fill-101</code>, <code>fill-256</code>";
-      return;
-    }
-    // overlay-NNN y fill-NNN usan el mismo mapa si no existe uno propio (ligas viejas de gabodocs)
-    let res = await fetch(`maps/${doc}.json`);
-    if (!res.ok) res = await fetch(`maps/${doc.replace(/^overlay-/i, "fill-")}.json`);
-    if (!res.ok) throw new Error(`No existe el documento "${doc}"`);
-    const map = await res.json();
-    const bytes = await (await fetch(map.template)).arrayBuffer();
+  const flatten = params.get("edit") === "0" || params.get("final") === "1";   // editable por defecto
+  const valid = (d) => /^(fill|overlay)-[a-z0-9_-]+$/i.test(d);
 
-    const { bytes: out, log } = await DocFiller.buildPdf(bytes, map, params, {
-      // Editable por defecto. &edit=0 (o &final=1) lo entrega cerrado, sin campos.
-      flatten: params.get("edit") === "0" || params.get("final") === "1",
-    });
-    if (log.length) console.warn("Avisos:", log);
+  // overlay-NNN y fill-NNN usan el mismo mapa si no existe uno propio (ligas viejas de gabodocs)
+  async function load(d) {
+    let res = await fetch(`maps/${d}.json`);
+    if (!res.ok) res = await fetch(`maps/${d.replace(/^overlay-/i, "fill-")}.json`);
+    if (!res.ok) throw new Error(`No existe el documento "${d}"`);
+    const map = await res.json();
+    return { map, bytes: await (await fetch(map.template)).arrayBuffer() };
+  }
+
+  try {
+    let out;
+    if (docs.length) {
+      if (!docs.every(valid)) throw new Error("Lista de documentos inválida: " + docs.join(", "));
+      const parts = [];
+      for (let i = 0; i < docs.length; i++) {
+        const pre = `${i + 1}_`;
+        const sub = new URLSearchParams();
+        for (const [k, v] of params) if (k.startsWith(pre)) sub.set(k.slice(pre.length), v);
+        const { map, bytes } = await load(docs[i]);
+        const r = await DocFiller.buildPdf(bytes, map, sub, { flatten });
+        if (r.log.length) console.warn(`Avisos ${docs[i]} (#${i + 1}):`, r.log);
+        parts.push(r);
+      }
+      out = await DocFiller.mergePdfs(parts);
+    } else {
+      if (!valid(doc)) {
+        $("msg").innerHTML = "Uso: <code>?doc=fill-101&amp;a1=…</code> o <code>?docs=overlay-256,fill-101&amp;1_a1=…&amp;2_a1=…</code>";
+        return;
+      }
+      const { map, bytes } = await load(doc);
+      const r = await DocFiller.buildPdf(bytes, map, params, { flatten });
+      if (r.log.length) console.warn("Avisos:", r.log);
+      out = r.bytes;
+    }
 
     const url = URL.createObjectURL(new Blob([out], { type: "application/pdf" }));
-    const name = (params.get("name") || doc) + ".pdf";
+    const name = (params.get("name") || (docs.length ? "paquete" : doc)) + ".pdf";
     $("dl").href = url; $("dl").download = name;
     $("open").href = url;
     $("msg").remove();

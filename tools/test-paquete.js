@@ -17,7 +17,7 @@ const { buildPdf, mergePdfs } = require("../js/engine.js");
     if (r.log.length) console.log(`AVISOS ${docs[i]} #${i + 1}:`, r.log.join(" | "));
     parts.push(r);
   }
-  const bytes = await mergePdfs(parts);
+  const bytes = await mergePdfs(parts, { duplex: params.get("duplex") === "1" });
   fs.writeFileSync(out, bytes);
   console.log(out, bytes.length, "bytes");
 })();

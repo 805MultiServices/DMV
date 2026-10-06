@@ -149,8 +149,10 @@
    * Cada documento se agrupa bajo un campo padre "d1", "d2"... para que los nombres
    * repetidos (p. ej. dos REG 101) no choquen entre sí.
    * @param {{bytes:Uint8Array}[]} parts  PDFs ya generados por buildPdf (sin aplanar o aplanados)
+   * @param {{duplex?:boolean}} opts  duplex: agrega una hoja en blanco a cada documento con
+   *        páginas impares (menos al último), para que cada uno empiece en hoja nueva al imprimir a doble cara
    */
-  async function mergePdfs(parts) {
+  async function mergePdfs(parts, opts = {}) {
     const { PDFObjectCopier, PDFArray, PDFRef } = PDFLib;
     const out = await PDFDocument.create();
     const ctx = out.context;
@@ -178,6 +180,10 @@
           if (nodeRef instanceof PDFRef) roots.set(nodeRef.toString(), nodeRef);
         }
       });
+      if (opts.duplex && pages.length % 2 === 1 && i < parts.length - 1) {
+        const last = pages[pages.length - 1];
+        out.addPage([last.getWidth(), last.getHeight()]);   // página en blanco del mismo tamaño
+      }
       if (roots.size) {
         const parentRef = ctx.register(ctx.obj({ T: PDFLib.PDFString.of("d" + (i + 1)), Kids: [...roots.values()] }));
         roots.forEach((r) => ctx.lookup(r, PDFDict).set(PDFName.of("Parent"), parentRef));

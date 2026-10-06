@@ -55,7 +55,7 @@
         if (r.log.length) console.warn(`Avisos ${docs[i]} (#${i + 1}):`, r.log);
         parts.push(r);
       }
-      out = await DocFiller.mergePdfs(parts);
+      out = await DocFiller.mergePdfs(parts, { duplex: params.get("duplex") === "1" });   // &duplex=1: hoja en blanco tras docs impares
     } else {
       if (!valid(doc)) {
         $("msg").innerHTML = "Uso: <code>?doc=fill-101&amp;a1=…</code> o <code>?docs=overlay-256,fill-101&amp;1_a1=…&amp;2_a1=…</code>";

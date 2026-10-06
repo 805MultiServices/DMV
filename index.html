@@ -32,7 +32,11 @@
       $("msg").innerHTML = "Uso: <code>?doc=fill-101&amp;a1=…&amp;a2=…</code><br>Documentos: <code>fill-101</code>, <code>fill-256</code>";
       return;
     }
-    const map = await (await fetch(`maps/${doc}.json`)).json();
+    // overlay-NNN y fill-NNN usan el mismo mapa si no existe uno propio (ligas viejas de gabodocs)
+    let res = await fetch(`maps/${doc}.json`);
+    if (!res.ok) res = await fetch(`maps/${doc.replace(/^overlay-/i, "fill-")}.json`);
+    if (!res.ok) throw new Error(`No existe el documento "${doc}"`);
+    const map = await res.json();
     const bytes = await (await fetch(map.template)).arrayBuffer();
 
     const { bytes: out, log } = await DocFiller.buildPdf(bytes, map, params, {

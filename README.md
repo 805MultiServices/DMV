@@ -12,7 +12,9 @@ index.html?doc=fill-256&a1=26U7013&a2=JYARJ28Y9HA000719&a3=2017%20/%20YAMA&a9=AP
 
 Con Vercel o Netlify (ya incluyen reglas de rewrite) también funcionan URLs limpias: `/fill-101?a1=...`
 
-Opciones extra: `&edit=1` (deja los campos editables), `&download=1` (descarga directa), `&name=mi-archivo`.
+El PDF sale **editable**: los campos quedan prellenados y se pueden corregir en el mismo PDF. Para guardarlo con los cambios usa el botón de descarga o imprimir del visor, no el botón azul (ese baja la versión original prellenada).
+
+Opciones extra: `&edit=0` o `&final=1` (lo entrega cerrado, sin campos editables), `&download=1` (descarga directa), `&name=mi-archivo`.
 Valores vacíos o `-` se ignoran.
 
 ## Estructura

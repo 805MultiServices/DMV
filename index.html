@@ -40,7 +40,8 @@
     const bytes = await (await fetch(map.template)).arrayBuffer();
 
     const { bytes: out, log } = await DocFiller.buildPdf(bytes, map, params, {
-      flatten: params.get("edit") !== "1",       // &edit=1 deja los campos editables
+      // Editable por defecto. &edit=0 (o &final=1) lo entrega cerrado, sin campos.
+      flatten: params.get("edit") === "0" || params.get("final") === "1",
     });
     if (log.length) console.warn("Avisos:", log);
 

@@ -1,7 +1,33 @@
 /* Motor de llenado. Funciona en navegador (PDFLib global) y en Node (require). */
 (function (root) {
   const PDFLib = root.PDFLib || (typeof require !== "undefined" ? require("pdf-lib") : null);
-  const { PDFDocument, PDFDropdown, StandardFonts, rgb } = PDFLib;
+  const { PDFDocument, PDFDropdown, PDFTextField, PDFCheckBox, PDFOptionList,
+          PDFName, PDFDict, StandardFonts, rgb } = PDFLib;
+
+  // Todo el texto en NEGRO y NEGRITAS (Helvetica-Bold), también lo que se escriba
+  // después en el visor: se cambia el "Default Appearance" (DA) de cada campo.
+  function styleFields(pdf, form, font) {
+    const ctx = pdf.context;
+    const af = form.acroForm.dict;
+    let dr = af.lookup(PDFName.of("DR"), PDFDict);
+    if (!dr) { dr = ctx.obj({}); af.set(PDFName.of("DR"), dr); }
+    let fonts = dr.lookup(PDFName.of("Font"), PDFDict);
+    if (!fonts) { fonts = ctx.obj({}); dr.set(PDFName.of("Font"), fonts); }
+    fonts.set(PDFName.of("HeBo"), font.ref);
+
+    const sizeOf = (da) => { const m = /([\d.]+)\s+Tf/.exec(da || ""); return m ? m[1] : "0"; };
+    form.getFields().forEach((f) => {
+      let da = null;
+      const cur = f.acroField.getDefaultAppearance() || "";
+      if (f instanceof PDFTextField || f instanceof PDFDropdown || f instanceof PDFOptionList)
+        da = `/HeBo ${sizeOf(cur)} Tf 0 g`;
+      else if (f instanceof PDFCheckBox)
+        da = `/ZaDb ${sizeOf(cur)} Tf 0 g`;
+      if (!da) return;
+      f.acroField.setDefaultAppearance(da);
+      f.acroField.getWidgets().forEach((w) => w.setDefaultAppearance(da));
+    });
+  }
 
   // Helvetica solo soporta WinAnsi: si hay un carácter raro, lo normalizamos.
   const safe = (s, font) => {
@@ -20,11 +46,12 @@
   async function buildPdf(templateBytes, map, params, opts = {}) {
     const get = (k) => (params.get ? params.get(k) : params[k]);
     const pdf = await PDFDocument.load(templateBytes);
-    const font = await pdf.embedFont(StandardFonts.Helvetica);
+    const font = await pdf.embedFont(StandardFonts.HelveticaBold);
     const log = [];
 
     if (map.mode === "fill") {
       const form = pdf.getForm();
+      styleFields(pdf, form, font);
       const byName = {};
       form.getFields().forEach((f) => (byName[f.getName()] = f));
       const find = (n) => byName[n] || byName[n.replace(/\\+/g, "\\")] ||
@@ -64,7 +91,10 @@
       }
       // Botones de la plantilla (Print / Clear Form...) que no deben salir en el PDF final
       (map.remove || []).forEach((n) => { const f = find(n); if (f) form.removeField(f); });
+      // Regenerar casillas (palomita negra) y textos con la fuente en negritas
+      form.getFields().forEach((f) => { if (f instanceof PDFCheckBox) f.defaultUpdateAppearances(); });
       form.updateFieldAppearances(font);
+      styleFields(pdf, form, font);   // pdf-lib reescribe el DA al regenerar: volver a dejarlo negro/negritas
       if (opts.flatten !== false) form.flatten();
 
     } else if (map.mode === "overlay") {

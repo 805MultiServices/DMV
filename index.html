@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Generador de documentos</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
-<script src="js/engine.js"></script>
+<script>document.write('<script src="js/engine.js?v=' + Date.now() + '"><\/script>')</script>
 <style>
   html,body{margin:0;height:100%;font-family:system-ui,sans-serif;background:#525659}
   iframe{width:100%;height:100%;border:0;display:none}
@@ -34,11 +34,14 @@
 
   // overlay-NNN y fill-NNN usan el mismo mapa si no existe uno propio (ligas viejas de gabodocs)
   async function load(d) {
-    let res = await fetch(`maps/${d}.json`);
-    if (!res.ok) res = await fetch(`maps/${d.replace(/^overlay-/i, "fill-")}.json`);
+    let res = await fetch(`maps/${d}.json`, { cache: "no-cache" });
+    if (!res.ok) res = await fetch(`maps/${d.replace(/^overlay-/i, "fill-")}.json`, { cache: "no-cache" });
     if (!res.ok) throw new Error(`No existe el documento "${d}"`);
     const map = await res.json();
-    return { map, bytes: map.template ? await (await fetch(map.template)).arrayBuffer() : null };
+    if (!map.template) return { map, bytes: null };
+    const t = await fetch(map.template, { cache: "no-cache" });
+    if (!t.ok) throw new Error(`No se pudo cargar la plantilla ${map.template} (recarga con Ctrl+F5)`);
+    return { map, bytes: await t.arrayBuffer() };
   }
 
   try {

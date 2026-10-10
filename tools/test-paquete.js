@@ -13,7 +13,7 @@ const { buildPdf, mergePdfs } = require("../js/engine.js");
     let f = `maps/${docs[i]}.json`;
     if (!fs.existsSync(f)) f = f.replace("/overlay-", "/fill-");
     const map = JSON.parse(fs.readFileSync(f));
-    const r = await buildPdf(fs.readFileSync(map.template), map, sub, { flatten: final === "final" });
+    const r = await buildPdf((map.template ? fs.readFileSync(map.template) : null), map, sub, { flatten: final === "final" });
     if (r.log.length) console.log(`AVISOS ${docs[i]} #${i + 1}:`, r.log.join(" | "));
     parts.push(r);
   }

@@ -1,0 +1,227 @@
+{
+ "mode": "overlay",
+ "pageSize": [
+  611,
+  794
+ ],
+ "note": "REG 262 (forma preimpresa del DMV): solo texto. Posiciones medidas del PDF de gabodocs.ray.mx/overlay-262 con l1=+0 l2=-10 l3=-12 l4=-10 l5=0 l6=-1 l7=0 l8=1 lo=10. Calibrar con &dx= / &dy= (puntos).",
+ "chain": {
+  "param": "cadena",
+  "first": "a6",
+  "last": "a7",
+  "seller": [
+   "a6",
+   "a20"
+  ],
+  "buyer": [
+   "a7",
+   "a14"
+  ],
+  "firstOnly": [
+   "a22",
+   "a23",
+   "a24",
+   "a25"
+  ],
+  "lastOnly": [
+   "a11",
+   "a12",
+   "a16",
+   "a17",
+   "a18",
+   "a19"
+  ]
+ },
+ "fields": {
+  "a1": {
+   "x": 133,
+   "y": 662,
+   "align": "center",
+   "w": 200,
+   "label": "VIN"
+  },
+  "a2": {
+   "x": 259,
+   "y": 662,
+   "align": "center",
+   "w": 46,
+   "label": "Año"
+  },
+  "a3": {
+   "x": 312.5,
+   "y": 662,
+   "align": "center",
+   "w": 56,
+   "label": "Marca"
+  },
+  "a4": {
+   "x": 381,
+   "y": 662,
+   "align": "center",
+   "w": 80,
+   "label": "Placa"
+  },
+  "a5": {
+   "x": 496.5,
+   "y": 662,
+   "align": "center",
+   "w": 120,
+   "label": "Motorcycle engine no."
+  },
+  "a6": {
+   "x": 184,
+   "y": 632,
+   "align": "center",
+   "w": 260,
+   "label": "Vendedor (arriba)"
+  },
+  "a7": {
+   "x": 51,
+   "y": 602,
+   "align": "left",
+   "w": 245,
+   "label": "Comprador (arriba)"
+  },
+  "a8": {
+   "x": 314,
+   "y": 602,
+   "align": "center",
+   "w": 22,
+   "label": "Mes de venta"
+  },
+  "a9": {
+   "x": 334,
+   "y": 602,
+   "align": "center",
+   "w": 22,
+   "label": "Día de venta"
+  },
+  "a10": {
+   "x": 369,
+   "y": 602,
+   "align": "center",
+   "w": 36,
+   "label": "Año de venta"
+  },
+  "a11": {
+   "x": 529,
+   "y": 602,
+   "align": "center",
+   "w": 90,
+   "label": "Precio"
+  },
+  "a12": {
+   "x": 263.5,
+   "y": 572,
+   "align": "center",
+   "w": 150,
+   "label": "Parentesco (gift/family)"
+  },
+  "a13": {
+   "x": 529,
+   "y": 572,
+   "align": "center",
+   "w": 90,
+   "label": "Valor del regalo"
+  },
+  "ao": {
+   "type": "digits",
+   "y": 494,
+   "xs": [
+    164.5,
+    191.5,
+    218.5,
+    250.5,
+    277.5,
+    304.5
+   ],
+   "label": "Odómetro (6 casillas, alineado a la derecha)"
+  },
+  "a14": {
+   "x": 38,
+   "y": 347,
+   "align": "left",
+   "w": 380,
+   "label": "Comprador: nombre (firma)"
+  },
+  "a15": {
+   "x": 448,
+   "y": 348,
+   "align": "center",
+   "w": 120,
+   "size": 10,
+   "label": "Comprador: fecha"
+  },
+  "a16": {
+   "x": 38,
+   "y": 275,
+   "align": "left",
+   "w": 214,
+   "label": "Comprador: dirección"
+  },
+  "a17": {
+   "x": 255,
+   "y": 275,
+   "align": "left",
+   "w": 128,
+   "label": "Comprador: ciudad"
+  },
+  "a18": {
+   "x": 385,
+   "y": 275,
+   "align": "left",
+   "w": 43,
+   "label": "Comprador: estado"
+  },
+  "a19": {
+   "x": 430,
+   "y": 275,
+   "align": "left",
+   "w": 100,
+   "label": "Comprador: ZIP"
+  },
+  "a20": {
+   "x": 38,
+   "y": 215,
+   "align": "left",
+   "w": 380,
+   "label": "Vendedor: nombre (firma)"
+  },
+  "a21": {
+   "x": 448,
+   "y": 216,
+   "align": "center",
+   "w": 120,
+   "size": 10,
+   "label": "Vendedor: fecha"
+  },
+  "a22": {
+   "x": 38,
+   "y": 143,
+   "align": "left",
+   "w": 214,
+   "label": "Vendedor: dirección"
+  },
+  "a23": {
+   "x": 255,
+   "y": 143,
+   "align": "left",
+   "w": 128,
+   "label": "Vendedor: ciudad"
+  },
+  "a24": {
+   "x": 385,
+   "y": 143,
+   "align": "left",
+   "w": 43,
+   "label": "Vendedor: estado"
+  },
+  "a25": {
+   "x": 430,
+   "y": 143,
+   "align": "left",
+   "w": 100,
+   "label": "Vendedor: ZIP"
+  }
+ }
+}

@@ -9,9 +9,9 @@
   function styleFields(pdf, form, font) {
     const ctx = pdf.context;
     const af = form.acroForm.dict;
-    let dr = af.lookup(PDFName.of("DR"), PDFDict);
+    let dr = af.has(PDFName.of("DR")) ? af.lookup(PDFName.of("DR"), PDFDict) : null;
     if (!dr) { dr = ctx.obj({}); af.set(PDFName.of("DR"), dr); }
-    let fonts = dr.lookup(PDFName.of("Font"), PDFDict);
+    let fonts = dr.has(PDFName.of("Font")) ? dr.lookup(PDFName.of("Font"), PDFDict) : null;
     if (!fonts) { fonts = ctx.obj({}); dr.set(PDFName.of("Font"), fonts); }
     fonts.set(PDFName.of("HeBo"), font.ref);
 
@@ -55,7 +55,8 @@
    */
   async function buildPdf(templateBytes, map, params, opts = {}) {
     const get = (k) => (params.get ? params.get(k) : params[k]);
-    const pdf = await PDFDocument.load(templateBytes);
+    // Sin plantilla (formas preimpresas como el REG 262): página en blanco del tamaño del mapa
+    const pdf = templateBytes ? await PDFDocument.load(templateBytes) : await PDFDocument.create();
     const font = await pdf.embedFont(StandardFonts.HelveticaBold);
     const log = [];
 
@@ -126,15 +127,71 @@
       if (opts.flatten !== false) form.flatten();
 
     } else if (map.mode === "overlay") {
-      // Para PDFs planos: texto en coordenadas (origen abajo-izquierda, en puntos)
-      const pages = pdf.getPages();
-      for (const [key, f] of Object.entries(map.fields)) {
-        const v = get(key);
-        if (v && String(v).trim())
-          pages[f.page || 0].drawText(safe(String(v).trim(), font), {
-            x: f.x, y: f.y, size: f.size || 10, font, color: rgb(0, 0, 0),
-          });
+      // Solo texto en coordenadas (origen abajo-izquierda, en puntos), para imprimir sobre la
+      // forma preimpresa. Cada dato es un campo editable sin borde ni fondo.
+      //   "x","y": inicio del texto (align "left") o centro ("center"); "y" es el renglón base.
+      //   "type":"digits": un dígito por casilla, alineado a la derecha (odómetro).
+      // Calibración: &dx= y &dy= mueven todo (puntos; + derecha / + arriba).
+      const form = pdf.getForm();
+      const { TextAlignment } = PDFLib;
+      const dx = parseFloat(get("dx")) || 0, dy = parseFloat(get("dy")) || 0;
+      const clean = (v) => (v == null || String(v).trim() === "-" ? "" : String(v).trim());
+
+      // Cadena de dueños: una hoja por traspaso (vendedor -> comprador)
+      let sheets = [{}];
+      const ch = map.chain;
+      if (ch) {
+        const people = [clean(get(ch.first)),
+          ...String(get(ch.param) || "").split("|").map(clean).filter(Boolean),
+          clean(get(ch.last))];
+        sheets = [];
+        for (let k = 0; k < people.length - 1; k++) {
+          const o = {};
+          const last = people.length - 2;
+          // en la primera/última hoja se respeta el valor propio de cada campo (a20, a14) si viene
+          ch.seller.forEach((f) => (o[f] = (k === 0 && clean(get(f))) || people[k]));
+          ch.buyer.forEach((f) => (o[f] = (k === last && clean(get(f))) || people[k + 1]));
+          if (k > 0) (ch.firstOnly || []).forEach((f) => (o[f] = ""));
+          if (k < people.length - 2) (ch.lastOnly || []).forEach((f) => (o[f] = ""));
+          sheets.push(o);
+        }
       }
+
+      const [pw, ph] = map.pageSize || [612, 792];
+      const hA = (size) => font.heightAtSize(size, { descender: false });
+      const addField = (page, name, value, f, cx, size) => {
+        const w = f.w || 100, h = size + 4;
+        const yb = f.y + dy;
+        const x = f.align === "center" ? cx + dx - w / 2 : cx + dx - 1;
+        const y = yb - 1 - (h - 2 - hA(size)) / 2;     // así pdf-lib deja el renglón base justo en yb
+        const tf = form.createTextField(name);
+        tf.addToPage(page, { x, y, width: w, height: h, borderWidth: 0,
+          backgroundColor: undefined, borderColor: undefined, textColor: rgb(0, 0, 0), font });
+        tf.setAlignment(f.align === "center" ? TextAlignment.Center : TextAlignment.Left);
+        tf.setFontSize(size);
+        if (value) { const t = safe(value, font); tf.setText(t); fitText(tf, t, font); }
+      };
+
+      sheets.forEach((over, k) => {
+        const page = templateBytes ? pdf.getPage(k) : pdf.addPage([pw, ph]);
+        const pre = sheets.length > 1 ? `h${k + 1}.` : "";
+        for (const [key, f] of Object.entries(map.fields)) {
+          const v = key in over ? over[key] : clean(get(key));
+          const size = f.size || 12;
+          if (f.type === "digits") {
+            const d = String(v || "").replace(/\D/g, "").slice(-f.xs.length);
+            const off = f.xs.length - d.length;
+            f.xs.forEach((cx, i) =>
+              addField(page, `${pre}${key}_${i + 1}`, d[i - off] || "", { ...f, align: "center", w: f.w || 20 }, cx, size));
+          } else {
+            addField(page, pre + key, v, f, f.x, size);
+          }
+        }
+      });
+      styleFields(pdf, form, font);
+      form.updateFieldAppearances(font);
+      styleFields(pdf, form, font);
+      if (opts.flatten !== false) form.flatten();
     }
     // Si el MediaBox es más grande que lo que se ve (CropBox), igualarlos
     pdf.getPages().forEach((pg) => {

@@ -191,6 +191,17 @@ Las casillas y demás secciones (`a15` en adelante) son iguales que en `fill-256
 
 **Nombre en la sección H:** si `a10` (nombre) viene vacío, el campo de `a9` se alarga para cubrir "Printed last name" y "First name" juntos, así cabe el nombre completo. Si llega `a10`, cada parte va en su campo. En cualquier campo de una línea, si el texto no cabe, la letra se reduce sola (mínimo 6 pt) en vez de cortarse.
 
+## `overlay-262` (REG 262, forma preimpresa) y cadena de dueños
+
+Genera **solo el texto**, para imprimirlo sobre el REG 262 preimpreso del DMV. Mismos parámetros que `gabodocs.ray.mx/overlay-262` (`a1`–`a25`, `ao` = odómetro), en las mismas posiciones: se midieron del PDF de gabodocs con `l1=+0 l2=-10 l3=-12 l4=-10 l5=0 l6=-1 l7=0 l8=1 lo=10`. Los parámetros `l1`–`l8` y `lo` se ignoran; para calibrar la impresora usa `&dx=` y `&dy=` (puntos; `dx` positivo mueve a la derecha, `dy` positivo hacia arriba).
+
+**Cadena de dueños:** `&cadena=PEDRO|LUIS|...` (los dueños intermedios, separados por `|`; los vacíos se ignoran). Sale una hoja por traspaso: `a6` → PEDRO, PEDRO → LUIS, LUIS → `a7`. En cada hoja el vendedor va en `a6` y `a20`, y el comprador en `a7` y `a14`.
+- En todas las hojas: VIN, año, marca, placa, fechas y odómetro.
+- Solo en la primera: dirección del vendedor original (`a22`–`a25`).
+- Solo en la última: precio (`a11`), parentesco (`a12`) y dirección del comprador (`a16`–`a19`).
+
+Esto se configura en `maps/overlay-262.json` (`chain.firstOnly` / `chain.lastOnly`). El odómetro va un dígito por casilla, alineado a la derecha.
+
 > **Nota sobre la sección B del 256:** en el PDF original los nombres internos de varios checkboxes están corridos respecto al renglón que tienen al lado. El mapa ya está corregido por posición visual.
 
 ## Privacidad

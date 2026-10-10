@@ -38,7 +38,7 @@
     if (!res.ok) res = await fetch(`maps/${d.replace(/^overlay-/i, "fill-")}.json`);
     if (!res.ok) throw new Error(`No existe el documento "${d}"`);
     const map = await res.json();
-    return { map, bytes: await (await fetch(map.template)).arrayBuffer() };
+    return { map, bytes: map.template ? await (await fetch(map.template)).arrayBuffer() : null };
   }
 
   try {

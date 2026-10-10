@@ -4,7 +4,7 @@ const { buildPdf } = require("../js/engine.js");
 (async () => {
   const [doc, qs, out] = process.argv.slice(2);
   const map = JSON.parse(fs.readFileSync(`maps/${doc}.json`));
-  const { bytes, log } = await buildPdf(fs.readFileSync(map.template), map, new URLSearchParams(qs));
+  const { bytes, log } = await buildPdf((map.template ? fs.readFileSync(map.template) : null), map, new URLSearchParams(qs));
   fs.writeFileSync(out, bytes);
   console.log(out, bytes.length, "bytes", log.length ? "AVISOS: " + log.join(" | ") : "sin avisos");
 })();

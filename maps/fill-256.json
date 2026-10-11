@@ -34,7 +34,8 @@
    "field": "g. undersigned state",
    "label": "G: texto 'I, the undersigned, state:' (multilínea)",
    "align": "center",
-   "valign": "middle"
+   "valign": "middle",
+   "lista": " Y "
   },
   "a9": {
    "field": "PRINTED NAME",

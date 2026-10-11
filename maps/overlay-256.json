@@ -31,7 +31,8 @@
    "field": "g. undersigned state",
    "label": "G: texto I, the undersigned, state: (ERROR_EN_TITULO)",
    "align": "center",
-   "valign": "middle"
+   "valign": "middle",
+   "lista": " Y "
   },
   "a8": {
    "field": "Current Market Value 1",

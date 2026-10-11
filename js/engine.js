@@ -158,6 +158,8 @@
         if (v == null || String(v).trim() === "" || String(v).trim() === "-") continue;
         v = String(v).trim();
         const s = typeof spec === "string" || Array.isArray(spec) ? { field: spec } : spec;
+        // Listas de AppSheet (EnumList): llegan unidas con " , " -> se unen con el separador del mapa
+        if (s.lista) v = v.split(/\s+,\s+/).map((x) => x.trim()).filter(Boolean).join(s.lista);
         const names = [].concat(s.field || s.fields);
 
         try {

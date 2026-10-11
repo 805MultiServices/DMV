@@ -170,7 +170,8 @@
    "field": "Reason for error erasure",
    "label": "Razón del error",
    "align": "center",
-   "valign": "middle"
+   "valign": "middle",
+   "lista": " Y "
   },
   "a36": {
    "field": "Signature date 2",

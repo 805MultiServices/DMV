@@ -30,11 +30,14 @@
   }
 
   // Helvetica solo soporta WinAnsi: si hay un carácter raro, lo normalizamos.
-  const safe = (s, font) => {
-    try { font.encodeText(s); return s; } catch (_) {
-      return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^\x20-\x7E\xA0-\xFF]/g, "?");
-    }
-  };
+  // Se respeta cada renglón (\n) y solo se cambia lo que la fuente no tiene, letra por letra.
+  const safe = (s, font) => String(s).replace(/\r\n?/g, "\n").split("\n").map((line) =>
+    [...line].map((ch) => {
+      try { font.encodeText(ch); return ch; } catch (_) {
+        const base = ch.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        try { font.encodeText(base); return base; } catch (_) { return /\s/.test(ch) ? " " : "?"; }
+      }
+    }).join("")).join("\n");
   // Si el texto no cabe en el campo (una sola línea), reduce la letra hasta que quepa (mín. 6 pt)
   function fitText(f, txt, font) {
     if (!(f instanceof PDFTextField) || f.isMultiline() || f.isCombed()) return;
@@ -110,7 +113,12 @@
                 const hit = o.find((x) => x.trim().toUpperCase() === v.toUpperCase());
                 if (hit) f.select(hit); else log.push(`${key}: "${v}" no está en la lista de ${n}`);
               } else {
-                const txt = safe(v, font);
+                let txt = safe(v, font);
+                const max = f instanceof PDFTextField ? f.getMaxLength() : undefined;
+                if (max && txt.length > max) {                 // antes quedaba vacío: ahora se recorta
+                  log.push(`${key}: texto de ${txt.length} caracteres recortado a ${max}`);
+                  txt = txt.slice(0, max);
+                }
                 f.setText(txt);
                 fitText(f, txt, font);
               }

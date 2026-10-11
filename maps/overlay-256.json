@@ -29,7 +29,9 @@
   },
   "a7": {
    "field": "g. undersigned state",
-   "label": "G: texto I, the undersigned, state: (ERROR_EN_TITULO)"
+   "label": "G: texto I, the undersigned, state: (ERROR_EN_TITULO)",
+   "align": "center",
+   "valign": "middle"
   },
   "a8": {
    "field": "Current Market Value 1",

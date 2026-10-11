@@ -52,6 +52,8 @@ tools/test.js          genera un PDF desde la terminal
 3. Crea `maps/fill-NNN.json` (copia uno existente).
 4. Si el PDF **no** tiene campos, usa `"mode": "overlay"` con `{"page":0,"x":120,"y":640,"size":10}` por parámetro (origen abajo-izquierda, en puntos).
 
+Recuadros de explicación (`a35` del 101, sección G del 256): el texto sale centrado a lo ancho y a lo alto del recuadro (`"valign": "middle"` en el mapa). Respeta los saltos de línea.
+
 Tipos de entrada en el mapa: texto (por defecto), `"type":"check"` (casilla), `"type":"chars"` (un carácter por casilla, p. ej. la licencia) y `"type":"choice"` (AND/OR).
 
 ## Parámetros de `fill-101`

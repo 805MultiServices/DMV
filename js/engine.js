@@ -48,6 +48,55 @@
     const need = font.widthOfTextAtSize(txt, size);
     if (need > w) f.setFontSize(Math.max(6, Math.floor((size * w / need) * 10) / 10));
   }
+  // Texto de varios renglones centrado a lo ancho y a lo alto del recuadro ("valign":"middle").
+  // pdf-lib solo sabe alinear arriba: se calcula el bloque de renglones y se baja a la mitad.
+  function middleProvider(textField, widget, font) {
+    const { drawTextField, componentsToColor } = PDFLib;
+    const r = widget.getRectangle();
+    const m = /([\d.]+)\s+Tf/.exec(textField.acroField.getDefaultAppearance() || "");
+    const size = (m && parseFloat(m[1])) || 10;
+    const bw = widget.getBorderStyle()?.getWidth() ?? 0;
+    const pad = 2, inset = bw + pad;
+    const box = { x: inset, y: inset, w: r.width - inset * 2, h: r.height - inset * 2 };
+    const W = (t) => font.widthOfTextAtSize(t, size);
+    const maxW = box.w * 0.97;   // margen: algunos visores dibujan Helvetica un poco más ancha
+
+    // Acomodo de renglones propio (el de pdf-lib pierde letras al partir palabras)
+    const rows = [];
+    String(textField.getText() || "").split("\n").forEach((para) => {
+      let line = "";
+      para.split(/ +/).forEach((word) => {
+        while (W(word) > maxW) {                        // palabra más ancha que el recuadro: se parte
+          let k = word.length - 1;
+          while (k > 1 && W(word.slice(0, k)) > maxW) k--;
+          if (line) { rows.push(line); line = ""; }
+          rows.push(word.slice(0, k)); word = word.slice(k);
+        }
+        const next = line ? line + " " + word : word;
+        if (W(next) <= maxW) line = next; else { rows.push(line); line = word; }
+      });
+      rows.push(line);
+    });
+
+    // Centrado vertical según la altura real de las letras (no la caja del renglón)
+    const lh = font.heightAtSize(size) * 1.2;
+    const asc = font.heightAtSize(size, { descender: false });
+    const desc = asc - font.heightAtSize(size);                 // negativo
+    const n = rows.length;
+    let b0 = box.y + box.h / 2 - (asc + desc) / 2 + ((n - 1) * lh) / 2;
+    b0 = Math.min(b0, box.y + box.h - asc);                      // si no cabe, empieza arriba
+    const lines = rows.map((t, i) => ({
+      text: t, encoded: font.encodeText(t), width: W(t), height: asc,
+      x: box.x + (box.w - W(t)) / 2, y: b0 - i * lh,
+    }));
+    const ap = widget.getAppearanceCharacteristics();
+    return drawTextField({
+      x: bw / 2, y: bw / 2, width: r.width - bw, height: r.height - bw, borderWidth: bw,
+      borderColor: componentsToColor(ap?.getBorderColor()), color: componentsToColor(ap?.getBackgroundColor()),
+      textColor: rgb(0, 0, 0), font: font.name, fontSize: size, textLines: lines, padding: pad,
+    });
+  }
+
   const truthy = (v) => /^(1|true|x|si|sí|yes|on)$/i.test(String(v).trim());
 
   /**
@@ -86,6 +135,13 @@
         b.defaultUpdateAppearances(font);   // la plantilla no trae apariencia; pdf-lib la necesita para quitarlo
         form.removeField(b);                // el campo cubierto ya no se usa en este PDF
       });
+
+      // Recuadros con texto centrado (horizontal y vertical): p. ej. explicación del error
+      const middles = [];
+      for (const spec of Object.values(map.fields)) {
+        if (spec && spec.valign === "middle")
+          [].concat(spec.field).forEach((n) => { const f = find(n); if (f) { f.setAlignment(PDFLib.TextAlignment.Center); middles.push(f); } });
+      }
 
       for (const [key, spec] of Object.entries(map.fields)) {
         let v = get(key);
@@ -131,6 +187,7 @@
       // Regenerar casillas (palomita negra) y textos con la fuente en negritas
       form.getFields().forEach((f) => { if (f instanceof PDFCheckBox) f.defaultUpdateAppearances(); });
       form.updateFieldAppearances(font);
+      middles.forEach((f) => f.updateAppearances(font, middleProvider));
       styleFields(pdf, form, font);   // pdf-lib reescribe el DA al regenerar: volver a dejarlo negro/negritas
       if (opts.flatten !== false) form.flatten();
 

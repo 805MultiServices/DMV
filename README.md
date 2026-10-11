@@ -14,6 +14,8 @@ Con Vercel o Netlify (ya incluyen reglas de rewrite) también funcionan URLs lim
 
 El PDF sale **editable**: los campos quedan prellenados y se pueden corregir en el mismo PDF. Para guardarlo con los cambios usa el botón de descarga o imprimir del visor, no el botón azul (ese baja la versión original prellenada).
 
+Todo el texto se escribe en **MAYÚSCULAS** (también lo que se teclee después en el visor, en Acrobat/Chrome/Edge). `&mayus=0` lo desactiva.
+
 Opciones extra: `&edit=0` o `&final=1` (lo entrega cerrado, sin campos editables), `&download=1` (descarga directa), `&name=mi-archivo`.
 Valores vacíos o `-` se ignoran.
 

@@ -26,6 +26,11 @@
       if (!da) return;
       f.acroField.setDefaultAppearance(da);
       f.acroField.getWidgets().forEach((w) => w.setDefaultAppearance(da));
+      // Lo que se escriba a mano en el visor también sale en mayúsculas (Acrobat, Chrome, Edge)
+      if (f instanceof PDFTextField)
+        f.acroField.dict.set(PDFName.of("AA"), ctx.obj({
+          K: { S: "JavaScript", JS: PDFLib.PDFString.of("if (event.change) event.change = event.change.toUpperCase();") },
+        }));
     });
   }
 
@@ -106,7 +111,12 @@
    * @param {{flatten?:boolean}} opts
    */
   async function buildPdf(templateBytes, map, params, opts = {}) {
-    const get = (k) => (params.get ? params.get(k) : params[k]);
+    // Todo el texto en MAYÚSCULAS (&mayus=0 lo desactiva)
+    const upper = (params.get ? params.get("mayus") : params.mayus) !== "0";
+    const get = (k) => {
+      const v = params.get ? params.get(k) : params[k];
+      return upper && typeof v === "string" ? v.toUpperCase() : v;
+    };
     // Sin plantilla (formas preimpresas como el REG 262): página en blanco del tamaño del mapa
     const pdf = templateBytes ? await PDFDocument.load(templateBytes) : await PDFDocument.create();
     const font = await pdf.embedFont(StandardFonts.HelveticaBold);

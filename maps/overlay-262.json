@@ -1,10 +1,10 @@
 {
  "mode": "overlay",
  "pageSize": [
-  611,
-  794
+  612,
+  792
  ],
- "note": "REG 262 (forma preimpresa del DMV): solo texto. Posiciones medidas del PDF de gabodocs.ray.mx/overlay-262 con l1=+0 l2=-10 l3=-12 l4=-10 l5=0 l6=-1 l7=0 l8=1 lo=10. Calibrar con &dx= / &dy= (puntos).",
+ "note": "REG 262 (forma preimpresa del DMV): solo texto. Posiciones medidas del PDF de gabodocs.ray.mx/overlay-262 con l1=+0 l2=-10 l3=-12 l4=-10 l5=0 l6=-1 l7=0 l8=1 lo=10. Calibrar con &dx= / &dy= (puntos). Página carta 612x792 y renglón del 2do comprador (y=323) tomados de la calibración impresa en Chrome (oct 2026).",
  "chain": {
   "param": "cadena",
   "first": "a6",
@@ -35,7 +35,9 @@
    "a18",
    "a19",
    "a21",
-   "ao"
+   "ao",
+   "a26",
+   "a26f"
   ]
  },
  "fields": {
@@ -158,6 +160,23 @@
    "size": 10,
    "label": "Comprador: fecha"
   },
+  "a26": {
+   "x": 38,
+   "y": 323,
+   "align": "left",
+   "w": 380,
+   "label": "Segundo comprador: nombre (2do renglón de BUYER'S SECTION)"
+  },
+  "a26f": {
+   "x": 448,
+   "y": 324,
+   "align": "center",
+   "w": 120,
+   "size": 10,
+   "from": "a15",
+   "onlyIf": "a26",
+   "label": "Segundo comprador: fecha (copia a15 si hay a26)"
+  },
   "a16": {
    "x": 38,
    "y": 275,
@@ -228,16 +247,6 @@
    "align": "left",
    "w": 100,
    "label": "Vendedor: ZIP"
-  }
- },
- "join": {
-  "a26": {
-   "into": [
-    "a7",
-    "a14"
-   ],
-   "sep": " / ",
-   "label": "Segundo comprador: se agrega después del primero en a7 y a14"
   }
  }
 }

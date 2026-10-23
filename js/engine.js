@@ -277,7 +277,10 @@
             f.xs.forEach((cx, i) =>
               addField(page, `${pre}${key}_${i + 1}`, c[i] || "", { ...f, align: "center", w: f.w || 16 }, cx, size));
           } else {
-            addField(page, pre + key, v, f, f.x, size);
+            // "from": copia otro parámetro (p. ej. la fecha del comprador) solo si "onlyIf" trae valor
+            let val = v;
+            if (f.from && !(pk in over)) val = clean(get(f.onlyIf || f.from)) ? clean(get(f.from)) : "";
+            addField(page, pre + key, val, f, f.x, size);
           }
         }
       });

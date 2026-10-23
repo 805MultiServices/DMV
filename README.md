@@ -204,9 +204,9 @@ Genera **solo el texto**, para imprimirlo sobre el REG 262 preimpreso del DMV. M
 - Solo en la primera: dirección del vendedor original (`a22`–`a25`).
 - Solo en la última: odómetro (`ao`), fecha de venta (`a8`–`a10`), precio (`a11`), parentesco (`a12`), fechas de firma (`a15`, `a21`) y dirección del comprador (`a16`–`a19`).
 
-**Segundo comprador:** `&a26=` agrega su nombre después del primero, separado con " / ", en los dos renglones del comprador (`a7` y `a14`). Con cadena, solo en la última hoja.
+**Segundo comprador:** `&a26=` va en el segundo renglón de BUYER'S SECTION (debajo de `a14`), con la misma fecha que `a15`. Arriba ("to ...", `a7`) solo va el primero. Con cadena, solo en la última hoja.
 
-Esto se configura en `maps/overlay-262.json` (`chain.firstOnly` / `chain.lastOnly`, `join`). El odómetro va un dígito por casilla, alineado a la derecha.
+Esto se configura en `maps/overlay-262.json` (`chain.firstOnly` / `chain.lastOnly`). El odómetro va un dígito por casilla, alineado a la derecha.
 
 ## `fill-227` (REG 227 REV. 9/2021, Application for Replacement or Transfer of Title)
 

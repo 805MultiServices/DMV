@@ -1,0 +1,137 @@
+{
+ "template": "templates/135.pdf",
+ "mode": "fill",
+ "note": "REG 135 Bill of Sale (REV. 2/2007). Parámetros iguales a gabodocs.ray.mx/fill-135. Cada campo sale en las dos copias de la hoja.",
+ "fields": {
+  "a1": {
+   "field": "Identification no",
+   "label": "VIN"
+  },
+  "a2": {
+   "field": "Yr Model",
+   "label": "Año"
+  },
+  "a3": {
+   "field": "Make",
+   "label": "Marca"
+  },
+  "a4": {
+   "field": "Lic Plate No",
+   "label": "Placa"
+  },
+  "a5": {
+   "field": "M/C Eng No",
+   "label": "No. de motor (motocicleta)"
+  },
+  "a6": {
+   "field": "Print seller's name",
+   "label": "Vendedor (en la frase 'I/We ... sell')"
+  },
+  "a7": {
+   "field": "Printed Buyer's name",
+   "label": "Comprador (en la frase '... to')"
+  },
+  "a8": {
+   "field": "Month",
+   "label": "Mes de venta"
+  },
+  "a9": {
+   "field": "Day",
+   "label": "Día de venta"
+  },
+  "a10": {
+   "type": "chars",
+   "field": [
+    "Year-1",
+    "Year-2",
+    "Year-3",
+    "Year-4"
+   ],
+   "label": "Año de venta (4 casillas)"
+  },
+  "a11": {
+   "field": "Selling Price",
+   "label": "Precio"
+  },
+  "a12": {
+   "field": "Relationship",
+   "label": "Parentesco (regalo)"
+  },
+  "a13": {
+   "field": "Gift Value",
+   "label": "Valor del regalo"
+  },
+  "a14": {
+   "field": "Seller print name 1",
+   "label": "Vendedor 1: nombre"
+  },
+  "a15": {
+   "field": "Seller mail address",
+   "label": "Vendedor: dirección"
+  },
+  "a16": {
+   "field": "Seller City",
+   "label": "Vendedor: ciudad"
+  },
+  "a17": {
+   "field": "Seller State",
+   "label": "Vendedor: estado"
+  },
+  "a18": {
+   "field": "Sell zip",
+   "label": "Vendedor: ZIP"
+  },
+  "a19": {
+   "field": "Daytime phone",
+   "label": "Vendedor: teléfono"
+  },
+  "a20": {
+   "field": "Sell date 1",
+   "label": "Vendedor 1: fecha"
+  },
+  "a21": {
+   "field": "DL, ID, Dealer No 1",
+   "label": "Vendedor 1: licencia/ID/dealer"
+  },
+  "a22": {
+   "field": "Seller print name 2",
+   "label": "Vendedor 2: nombre"
+  },
+  "a23": {
+   "field": "Sell date 2",
+   "label": "Vendedor 2: fecha"
+  },
+  "a24": {
+   "field": "DL, ID, Dealer No 2",
+   "label": "Vendedor 2: licencia/ID/dealer"
+  },
+  "a25": {
+   "field": "Buyer print name 1",
+   "label": "Comprador 1: nombre"
+  },
+  "a26": {
+   "field": "Buyer print name 2",
+   "label": "Comprador 2: nombre (segundo comprador)"
+  },
+  "a27": {
+   "field": "Buy mail address",
+   "label": "Comprador: dirección"
+  },
+  "a28": {
+   "field": "Buyer City",
+   "label": "Comprador: ciudad"
+  },
+  "a29": {
+   "field": "Buyer State",
+   "label": "Comprador: estado"
+  },
+  "a30": {
+   "field": "Buyer zip",
+   "label": "Comprador: ZIP"
+  }
+ },
+ "remove": [
+  "click to",
+  "click to 1"
+ ]
+}

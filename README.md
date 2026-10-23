@@ -234,6 +234,22 @@ Mismos parámetros que `gabodocs.ray.mx/fill-227` (que usa la REV. 8/2017; las s
 
 Las casillas **AND/OR** entre nuevos dueños no están en el mapa: siempre quedan en blanco.
 
+## `fill-135` (REG 135 Bill of Sale, REV. 2/2007)
+
+Mismos parámetros que `gabodocs.ray.mx/fill-135`. La hoja trae dos copias del Bill of Sale (arriba y abajo) y cada dato se llena en ambas.
+
+| Param | Qué es |
+|---|---|
+| `a1` `a2` `a3` `a4` `a5` | VIN, año, marca, placa, número de motor (moto) |
+| `a6` / `a7` | Vendedor / comprador en la frase "I/We ... sell ... to ..." |
+| `a8` `a9` `a10` | Fecha de venta: mes, día, año (4 casillas) |
+| `a11` / `a12` `a13` | Precio / regalo: parentesco y valor |
+| `a14` `a20` `a21` | Vendedor 1: nombre, fecha, licencia/ID/dealer |
+| `a22` `a23` `a24` | Vendedor 2: nombre, fecha, licencia/ID/dealer |
+| `a15`–`a19` | Vendedor: dirección, ciudad, estado, ZIP, teléfono |
+| `a25` / `a26` | Comprador 1 / **comprador 2** |
+| `a27`–`a30` | Comprador: dirección, ciudad, estado, ZIP |
+
 > **Nota sobre la sección B del 256:** en el PDF original los nombres internos de varios checkboxes están corridos respecto al renglón que tienen al lado. El mapa ya está corregido por posición visual.
 
 ## Privacidad

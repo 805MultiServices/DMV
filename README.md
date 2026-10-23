@@ -258,7 +258,7 @@ Mismos parámetros que `gabodocs.ray.mx/fill-343`. El formulario del DMV se usa 
 
 | Param | Qué es |
 |---|---|
-| `a1` | VIN (17 casillas; sale en las dos hojas) |
+| `a1` | VIN (un carácter centrado en cada caja; sale en las dos hojas) |
 | `a2` `a3` `a4` `a5` `a6` `a7` `a8` | Marca, año, combustible, placa, modelo, carrocería, motor (moto) |
 | `a24` `a25` `a26` | S2 dueño: nombre, licencia (8 casillas), estado |
 | `a29` `a30` `a31` | S2 **co-dueño (segundo comprador)**: nombre, licencia, estado |

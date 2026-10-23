@@ -229,5 +229,15 @@
    "w": 100,
    "label": "Vendedor: ZIP"
   }
+ },
+ "join": {
+  "a26": {
+   "into": [
+    "a7",
+    "a14"
+   ],
+   "sep": " / ",
+   "label": "Segundo comprador: se agrega después del primero en a7 y a14"
+  }
  }
 }

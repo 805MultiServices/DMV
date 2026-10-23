@@ -113,9 +113,17 @@
   async function buildPdf(templateBytes, map, params, opts = {}) {
     // Todo el texto en MAYÚSCULAS (&mayus=0 lo desactiva)
     const upper = (params.get ? params.get("mayus") : params.mayus) !== "0";
-    const get = (k) => {
+    const raw = (k) => {
       const v = params.get ? params.get(k) : params[k];
       return upper && typeof v === "string" ? v.toUpperCase() : v;
+    };
+    // "join": un parámetro extra se agrega al final de otros (p. ej. 2do comprador junto al 1ro en el 262)
+    const ok = (v) => v != null && String(v).trim() !== "" && String(v).trim() !== "-";
+    const get = (k) => {
+      let v = raw(k);
+      for (const [src, j] of Object.entries(map.join || {}))
+        if (j.into.includes(k) && ok(v) && ok(raw(src))) v = String(v).trim() + j.sep + String(raw(src)).trim();
+      return v;
     };
     // Sin plantilla (formas preimpresas como el REG 262): página en blanco del tamaño del mapa
     const pdf = templateBytes ? await PDFDocument.load(templateBytes) : await PDFDocument.create();

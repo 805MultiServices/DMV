@@ -1,0 +1,442 @@
+{
+ "template": "templates/227.pdf",
+ "mode": "fill",
+ "note": "REG 227 (REV. 9/2021). Parámetros iguales a gabodocs.ray.mx/fill-227 (hecho sobre la REV. 8/2017). Las casillas AND/OR entre nuevos dueños (a64/a65, a69/a70) se dejan siempre en blanco a propósito.",
+ "fields": {
+  "a1": {
+   "field": "App for",
+   "type": "check",
+   "label": "Casilla: Replacement Title (secciones 1-3)"
+  },
+  "a2": {
+   "field": "App for2",
+   "type": "check",
+   "label": "Casilla: Transfer of Title with Replacement"
+  },
+  "a3": {
+   "field": "License Plate/CF Number1",
+   "label": "Placa"
+  },
+  "a4": {
+   "field": "Vehicle/Vessel ID/Number1",
+   "label": "VIN"
+  },
+  "a5": {
+   "field": "Year/Make",
+   "label": "Año / Marca"
+  },
+  "a6": {
+   "field": "1 True Full Name, Last",
+   "label": "S1: dueño registrado (nombre completo)"
+  },
+  "a7": {
+   "type": "chars",
+   "field": [
+    "1 DL/ID Number-1.0",
+    "1 DL/ID Number-1.1",
+    "1 DL/ID Number-1.2",
+    "1 DL/ID Number-1.3",
+    "1 DL/ID Number-1.4",
+    "1 DL/ID Number-1.5",
+    "1 DL/ID Number-1.6",
+    "1 DL/ID Number-1.7"
+   ],
+   "label": "S1: licencia dueño (8 casillas)"
+  },
+  "a8": {
+   "field": "state.1",
+   "label": "S1: estado licencia dueño"
+  },
+  "a9": {
+   "field": "1 True Full Name, Last-2",
+   "label": "S1: co-dueño"
+  },
+  "a10": {
+   "type": "chars",
+   "field": [
+    "1 DL/ID Number-2.0",
+    "1 DL/ID Number-2.1",
+    "1 DL/ID Number-2.2",
+    "1 DL/ID Number-2.3",
+    "1 DL/ID Number-2.4",
+    "1 DL/ID Number-2.5",
+    "1 DL/ID Number-2.6",
+    "1 DL/ID Number-2.7.0"
+   ],
+   "label": "S1: licencia co-dueño (8 casillas)"
+  },
+  "a11": {
+   "field": "state.0",
+   "label": "S1: estado licencia co-dueño"
+  },
+  "a12": {
+   "field": "1 Residence or Business Address.0",
+   "label": "S1: domicilio"
+  },
+  "a13": {
+   "field": "1 Apt/Space Number-1",
+   "label": "S1: apt"
+  },
+  "a14": {
+   "field": "1 City-1",
+   "label": "S1: ciudad"
+  },
+  "a15": {
+   "field": "1 States1",
+   "label": "S1: estado"
+  },
+  "a16": {
+   "field": "1 Zip Code-1",
+   "label": "S1: ZIP"
+  },
+  "a17": {
+   "field": "County of residence",
+   "label": "S1: condado"
+  },
+  "a18": {
+   "field": "1 Mailing Address",
+   "label": "S1: dirección postal"
+  },
+  "a19": {
+   "field": "1 Apt/Space Number-2",
+   "label": "S1: apt postal"
+  },
+  "a20": {
+   "field": "1 City-2",
+   "label": "S1: ciudad postal"
+  },
+  "a21": {
+   "field": "1 States2",
+   "label": "S1: estado postal"
+  },
+  "a22": {
+   "field": "1 Zip Code-2.0",
+   "label": "S1: ZIP postal"
+  },
+  "a23": {
+   "field": "Name of bank, finance company, or individual having a lien on this vehicle",
+   "label": "S2: legal owner (lienholder)"
+  },
+  "a24": {
+   "field": "2 Address",
+   "label": "S2: dirección"
+  },
+  "a25": {
+   "field": "2 Apt/Space Number",
+   "label": "S2: apt"
+  },
+  "a26": {
+   "field": "2 City",
+   "label": "S2: ciudad"
+  },
+  "a27": {
+   "field": "2 States1",
+   "label": "S2: estado"
+  },
+  "a28": {
+   "field": "2 Zip Code",
+   "label": "S2: ZIP"
+  },
+  "a29": {
+   "field": "Check Box1",
+   "type": "check",
+   "label": "S3: Lost"
+  },
+  "a30": {
+   "field": "Check Box2",
+   "type": "check",
+   "label": "S3: Stolen"
+  },
+  "a31": {
+   "field": "Check Box6",
+   "type": "check",
+   "label": "S3: Illegible/Mutilated"
+  },
+  "a32": {
+   "field": "Check Box4",
+   "type": "check",
+   "label": "S3: Not Received from Prior Owner"
+  },
+  "a33": {
+   "field": "Check Box5",
+   "type": "check",
+   "label": "S3: Not Received from DMV"
+  },
+  "a34": {
+   "field": "3 Print Name Legal Owner.0",
+   "label": "S3: nombre impreso"
+  },
+  "a35": {
+   "field": "3 Date.0",
+   "label": "S3: fecha"
+  },
+  "a36": {
+   "field": "area code.0",
+   "label": "S3: lada"
+  },
+  "a37": {
+   "field": "3 Daytime Phone Number",
+   "label": "S3: teléfono"
+  },
+  "a38": {
+   "field": "3 Print Name Legal Owner.1",
+   "label": "S4: nombre impreso 1"
+  },
+  "a39": {
+   "field": "date.0",
+   "label": "S4: fecha 1"
+  },
+  "a40": {
+   "field": "area",
+   "label": "S4: lada 1"
+  },
+  "a41": {
+   "field": "4 Daytime Phone Number 1",
+   "label": "S4: teléfono 1"
+  },
+  "a42": {
+   "field": "3 Print Name Legal Owner.2.0",
+   "label": "S4: nombre impreso 2"
+  },
+  "a43": {
+   "field": "4 Date-2",
+   "label": "S4: fecha 2"
+  },
+  "a44": {
+   "field": "area23",
+   "label": "S4: lada 2"
+  },
+  "a45": {
+   "field": "4 Daytime Phone Number 2.0",
+   "label": "S4: teléfono 2"
+  },
+  "a46": {
+   "field": "Printed name of authorized agent signing for company",
+   "label": "S5: agente autorizado"
+  },
+  "a47": {
+   "field": "title of authorized agent signing for company",
+   "label": "S5: título del agente"
+  },
+  "a48": {
+   "field": "area code.1",
+   "label": "S5: lada"
+  },
+  "a49": {
+   "field": "4 Daytime Phone Number 2.1",
+   "label": "S5: teléfono"
+  },
+  "a50": {
+   "field": "date.1",
+   "label": "S5: fecha"
+  },
+  "a51": {
+   "field": "License Plate/CF Number122",
+   "label": "Hoja 2: placa"
+  },
+  "a52": {
+   "field": "Vehicle/Vessel ID/Number211",
+   "label": "Hoja 2: VIN"
+  },
+  "a53": {
+   "field": "Year/Make2",
+   "label": "Hoja 2: año / marca"
+  },
+  "a54": {
+   "field": "6 Purchase Price/Market Value",
+   "label": "S6: mes de compra"
+  },
+  "a55": {
+   "field": "Date Purchased",
+   "label": "S6: día de compra"
+  },
+  "a56": {
+   "field": "Acquired Yr",
+   "label": "S6: año de compra"
+  },
+  "a57": {
+   "field": "Purchase price",
+   "label": "S6: precio"
+  },
+  "a58": {
+   "field": "Gift Box",
+   "type": "check",
+   "label": "S6: Gift"
+  },
+  "a59": {
+   "field": "Gift Box1",
+   "type": "check",
+   "label": "S6: Trade"
+  },
+  "a60": {
+   "field": "market value",
+   "label": "S6: valor de mercado"
+  },
+  "a61": {
+   "field": "true full name of new owner, last, first, middle, suffix, business name, or lessor",
+   "label": "S6: nuevo dueño"
+  },
+  "a62": {
+   "type": "chars",
+   "field": [
+    "6 DL/ID Card Numer-1.0.0",
+    "6 DL/ID Card Numer-1.1",
+    "6 DL/ID Card Numer-1.2",
+    "6 DL/ID Card Numer-1.3",
+    "6 DL/ID Card Numer-1.4",
+    "6 DL/ID Card Numer-1.5",
+    "6 DL/ID Card Numer-1.6",
+    "6 DL/ID Card Numer-1.7.0"
+   ],
+   "label": "S6: licencia nuevo dueño (8 casillas)"
+  },
+  "a63": {
+   "field": "6 DL/ID Card Numer-1.7.1",
+   "label": "S6: estado licencia nuevo dueño"
+  },
+  "a66": {
+   "field": "6 Name First-1",
+   "label": "S6: segundo nuevo dueño (co-owner)"
+  },
+  "a67": {
+   "type": "chars",
+   "field": [
+    "6 DL/ID Card Numer-1.0.1.0",
+    "6 DL/ID Card Numer-1.0.1.1",
+    "6 DL/ID Card Numer-1.0.1.2",
+    "6 DL/ID Card Numer-1.0.1.3",
+    "6 DL/ID Card Numer-1.0.1.4",
+    "6 DL/ID Card Numer-1.0.1.5",
+    "6 DL/ID Card Numer-1.0.1.6",
+    "6 DL/ID Card Numer-1.0.1.7"
+   ],
+   "label": "S6: licencia segundo dueño (8 casillas)"
+  },
+  "a68": {
+   "field": "6 state",
+   "label": "S6: estado licencia segundo dueño"
+  },
+  "a71": {
+   "field": "6 Name Last-2",
+   "label": "S6: tercer nuevo dueño"
+  },
+  "a72": {
+   "type": "chars",
+   "field": [
+    "6 DL/ID CArd Number-2.0",
+    "6 DL/ID CArd Number-2.1",
+    "6 DL/ID CArd Number-2.2",
+    "6 DL/ID CArd Number-2.3",
+    "6 DL/ID CArd Number-2.4",
+    "6 DL/ID CArd Number-2.5",
+    "6 DL/ID CArd Number-2.6",
+    "6 DL/ID CArd Number-2.7"
+   ],
+   "label": "S6: licencia tercer dueño (8 casillas)"
+  },
+  "a73": {
+   "field": "state-2.8",
+   "label": "S6: estado licencia tercer dueño"
+  },
+  "a74": {
+   "field": "physical residence or business address.0",
+   "label": "S6: domicilio"
+  },
+  "a75": {
+   "field": "6 Apt/Space Number-1",
+   "label": "S6: apt"
+  },
+  "a76": {
+   "field": "6 City-1",
+   "label": "S6: ciudad"
+  },
+  "a77": {
+   "field": "6 States1",
+   "label": "S6: estado"
+  },
+  "a78": {
+   "field": "6 Zip Code-1",
+   "label": "S6: ZIP"
+  },
+  "a79": {
+   "field": "county residence or county where vehicle or vessle is princi.0",
+   "label": "S6: condado"
+  },
+  "a80": {
+   "field": "Equipment number. Optional",
+   "label": "S6: número de equipo"
+  },
+  "a81": {
+   "field": "6 Mailing Address",
+   "label": "S6: dirección postal"
+  },
+  "a82": {
+   "field": "6 Apt/Space Number-2",
+   "label": "S6: apt postal"
+  },
+  "a83": {
+   "field": "6 City-2",
+   "label": "S6: ciudad postal"
+  },
+  "a84": {
+   "field": "6 States 2.0",
+   "label": "S6: estado postal"
+  },
+  "a85": {
+   "field": "6 Zip Code-2.0",
+   "label": "S6: ZIP postal"
+  },
+  "a86": {
+   "field": "Lessee address, if different from address above",
+   "label": "S6: dirección del arrendatario"
+  },
+  "a87": {
+   "field": "Vessel or trailer coach principally kept at, address or location if different from physical/business address above",
+   "label": "S6: lugar donde se guarda (embarcación/trailer)"
+  },
+  "a88": {
+   "field": "county.0.0",
+   "label": "S6: condado (embarcación/trailer)"
+  },
+  "a89": {
+   "field": "date.123",
+   "label": "S6: fecha firma 1"
+  },
+  "a90": {
+   "field": "6 area code 1",
+   "label": "S6: lada 1"
+  },
+  "a91": {
+   "field": "daytime telephone number",
+   "label": "S6: teléfono 1"
+  },
+  "a92": {
+   "field": "date 2",
+   "label": "S6: fecha firma 2"
+  },
+  "a93": {
+   "field": "area code 2",
+   "label": "S6: lada 2"
+  },
+  "a94": {
+   "field": "daytime number 2",
+   "label": "S6: teléfono 2"
+  },
+  "a95": {
+   "field": "date 3",
+   "label": "S6: fecha firma 3"
+  },
+  "a96": {
+   "field": "area code 3",
+   "label": "S6: lada 3"
+  },
+  "a97": {
+   "field": "daytime number 3",
+   "label": "S6: teléfono 3"
+  }
+ },
+ "remove": [
+  "click to",
+  "click to 1"
+ ]
+}

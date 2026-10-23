@@ -206,6 +206,34 @@ Genera **solo el texto**, para imprimirlo sobre el REG 262 preimpreso del DMV. M
 
 Esto se configura en `maps/overlay-262.json` (`chain.firstOnly` / `chain.lastOnly`). El odómetro va un dígito por casilla, alineado a la derecha.
 
+## `fill-227` (REG 227 REV. 9/2021, Application for Replacement or Transfer of Title)
+
+Mismos parámetros que `gabodocs.ray.mx/fill-227` (que usa la REV. 8/2017; las secciones son iguales). Principales:
+
+| Param | Qué es |
+|---|---|
+| `a1` / `a2` | Casillas: Replacement Title / Transfer of Title with Replacement |
+| `a3` `a4` `a5` | Placa, VIN, año / marca (hoja 1) |
+| `a6` `a7` `a8` | S1 dueño registrado: nombre, licencia (8 casillas), estado |
+| `a9` `a10` `a11` | S1 co-dueño: nombre, licencia, estado |
+| `a12`–`a17` | S1 domicilio, apt, ciudad, estado, ZIP, condado (`a18`–`a22` dirección postal) |
+| `a23`–`a28` | S2 legal owner (lienholder) y su dirección |
+| `a29`–`a33` | S3 casillas: Lost, Stolen, Illegible, Not received from prior owner, Not received from DMV |
+| `a34` `a35` `a36` `a37` | S3 nombre impreso, fecha, lada, teléfono |
+| `a38`–`a45` | S4 liberación: nombre, fecha, lada, teléfono (2 renglones) |
+| `a46`–`a50` | S5 agente del legal owner: nombre, título, lada, teléfono, fecha |
+| `a51` `a52` `a53` | Placa, VIN, año / marca (hoja 2) |
+| `a54` `a55` `a56` `a57` | S6 fecha de compra (mes, día, año) y precio |
+| `a58` `a59` `a60` | S6 casillas Gift / Trade y valor de mercado |
+| `a61` `a62` `a63` | S6 nuevo dueño: nombre, licencia (8 casillas), estado |
+| `a66` `a67` `a68` | S6 **segundo nuevo dueño** (co-owner): nombre, licencia, estado |
+| `a71` `a72` `a73` | S6 tercer nuevo dueño |
+| `a74`–`a79` | S6 domicilio, apt, ciudad, estado, ZIP, condado (`a80` equipo, `a81`–`a85` dirección postal) |
+| `a86` `a87` `a88` | Dirección del arrendatario, lugar donde se guarda, condado |
+| `a89`–`a97` | Firmas de nuevos dueños: fecha, lada, teléfono (3 renglones) |
+
+Las casillas **AND/OR** entre nuevos dueños no están en el mapa: siempre quedan en blanco.
+
 > **Nota sobre la sección B del 256:** en el PDF original los nombres internos de varios checkboxes están corridos respecto al renglón que tienen al lado. El mapa ya está corregido por posición visual.
 
 ## Privacidad

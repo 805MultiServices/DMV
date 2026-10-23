@@ -250,16 +250,24 @@
       };
 
       sheets.forEach((over, k) => {
-        const page = templateBytes ? pdf.getPage(k) : pdf.addPage([pw, ph]);
+        const sheet = templateBytes ? null : pdf.addPage([pw, ph]);
         const pre = sheets.length > 1 ? `h${k + 1}.` : "";
         for (const [key, f] of Object.entries(map.fields)) {
-          const v = key in over ? over[key] : clean(get(key));
+          // "a1@p2": el mismo parámetro en otro lugar (p. ej. el VIN en las dos hojas)
+          const pk = key.split("@")[0];
+          const v = pk in over ? over[pk] : clean(get(pk));
           const size = f.size || 12;
-          if (f.type === "digits") {
+          // Con plantilla: "page" indica la hoja de la plantilla (0 = primera)
+          const page = sheet || pdf.getPage(f.page || 0);
+          if (f.type === "digits") {          // números alineados a la derecha (odómetro)
             const d = String(v || "").replace(/\D/g, "").slice(-f.xs.length);
             const off = f.xs.length - d.length;
             f.xs.forEach((cx, i) =>
               addField(page, `${pre}${key}_${i + 1}`, d[i - off] || "", { ...f, align: "center", w: f.w || 20 }, cx, size));
+          } else if (f.type === "chars") {    // un carácter por casilla, de izquierda a derecha (VIN, licencia)
+            const c = String(v || "").replace(/[\s-]/g, "").slice(0, f.xs.length);
+            f.xs.forEach((cx, i) =>
+              addField(page, `${pre}${key}_${i + 1}`, c[i] || "", { ...f, align: "center", w: f.w || 16 }, cx, size));
           } else {
             addField(page, pre + key, v, f, f.x, size);
           }

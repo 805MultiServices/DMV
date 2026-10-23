@@ -250,6 +250,29 @@ Mismos parámetros que `gabodocs.ray.mx/fill-135`. La hoja trae dos copias del B
 | `a25` / `a26` | Comprador 1 / **comprador 2** |
 | `a27`–`a30` | Comprador: dirección, ciudad, estado, ZIP |
 
+## `fill-343` (REG 343 REV. 2/2012, Application for Title or Registration)
+
+Mismos parámetros que `gabodocs.ray.mx/fill-343`. El formulario del DMV se usa como fondo y cada dato se coloca en la posición medida del PDF de gabodocs (modo `overlay` con plantilla), como campo editable.
+
+| Param | Qué es |
+|---|---|
+| `a1` | VIN (17 casillas; sale en las dos hojas) |
+| `a2` `a3` `a4` `a5` `a6` `a7` `a8` | Marca, año, combustible, placa, modelo, carrocería, motor (moto) |
+| `a24` `a25` `a26` | S2 dueño: nombre, licencia (8 casillas), estado |
+| `a29` `a30` `a31` | S2 **co-dueño (segundo comprador)**: nombre, licencia, estado |
+| `a34` `a35` `a36` | S2 tercer dueño |
+| `a37`–`a43` | S2 domicilio, apt, ciudad, estado, ZIP, condado, número de equipo |
+| `a44`–`a57` | S2 dirección postal, arrendatario, trailer coach |
+| `a58`–`a69` | S3 legal owner (lienholder), ELT #, direcciones |
+| `a72` / `a76` | S4 odómetro (6 casillas, alineado a la derecha) / explicación de discrepancia |
+| `a77`–`a90` | S5 fechas (mes, día, año) |
+| `a96` `a98` `a100` `a105` `a108` | S6 precio, valor de regalo, valor de trade, parentesco, costo de construcción |
+| `a125`–`a128` | S9 firma 1: nombre, fecha, lada, teléfono |
+| `a129`–`a132` | S9 firma 2 (co-dueño): nombre, fecha, lada, teléfono |
+| `a133`–`a136` | S9 firma 3 |
+
+Las casillas de selección (AND/OR, tipo de vehículo, sí/no) no están en el mapa.
+
 > **Nota sobre la sección B del 256:** en el PDF original los nombres internos de varios checkboxes están corridos respecto al renglón que tienen al lado. El mapa ya está corregido por posición visual.
 
 ## Privacidad

@@ -1,0 +1,887 @@
+{
+ "template": "templates/343.pdf",
+ "mode": "overlay",
+ "note": "REG 343 (REV. 2/2012), fondo = formulario en blanco. Posiciones medidas del PDF de gabodocs.ray.mx/fill-343. VIN en 17 casillas iguales sobre las 15 cajas impresas. Casillas de selección (AND/OR, tipo de vehículo, etc.) no incluidas.",
+ "fields": {
+  "a1": {
+   "type": "chars",
+   "page": 0,
+   "y": 656.7,
+   "xs": [
+    32.82,
+    50.47,
+    68.12,
+    85.76,
+    103.41,
+    121.06,
+    138.71,
+    156.35,
+    174.0,
+    191.65,
+    209.29,
+    226.94,
+    244.59,
+    262.24,
+    279.88,
+    297.53,
+    315.18
+   ],
+   "w": 17,
+   "size": 10,
+   "label": "VIN (17 casillas)"
+  },
+  "a4": {
+   "page": 0,
+   "x": 545.8,
+   "y": 656.4,
+   "align": "left",
+   "w": 39.2,
+   "size": 10,
+   "label": "Tipo de combustible"
+  },
+  "a2": {
+   "page": 0,
+   "x": 388.2,
+   "y": 656.3,
+   "align": "left",
+   "w": 108.0,
+   "size": 10,
+   "label": "Marca"
+  },
+  "a3": {
+   "page": 0,
+   "x": 499.2,
+   "y": 656.3,
+   "align": "left",
+   "w": 43.6,
+   "size": 10,
+   "label": "Año"
+  },
+  "a8": {
+   "page": 0,
+   "x": 387.9,
+   "y": 632.8,
+   "align": "left",
+   "w": 197.1,
+   "size": 10,
+   "label": "No. de motor (moto)"
+  },
+  "a5": {
+   "page": 0,
+   "x": 24.8,
+   "y": 632.2,
+   "align": "left",
+   "w": 140.2,
+   "size": 10,
+   "label": "Placa CA"
+  },
+  "a6": {
+   "page": 0,
+   "x": 168.0,
+   "y": 632.2,
+   "align": "left",
+   "w": 90.3,
+   "size": 10,
+   "label": "Modelo"
+  },
+  "a7": {
+   "page": 0,
+   "x": 261.3,
+   "y": 632.2,
+   "align": "left",
+   "w": 123.6,
+   "size": 10,
+   "label": "Tipo de carrocería"
+  },
+  "a14": {
+   "page": 0,
+   "x": 414.1,
+   "y": 609.3,
+   "align": "left",
+   "w": 93.1,
+   "size": 10,
+   "label": "Largo (trailer coach)"
+  },
+  "a15": {
+   "page": 0,
+   "x": 510.2,
+   "y": 609.3,
+   "align": "left",
+   "w": 74.8,
+   "size": 10,
+   "label": "Ancho (trailer coach)"
+  },
+  "a20": {
+   "page": 0,
+   "x": 94.5,
+   "y": 517.4,
+   "align": "left",
+   "w": 139.9,
+   "size": 10,
+   "label": "Número de ejes"
+  },
+  "a21": {
+   "page": 0,
+   "x": 237.4,
+   "y": 516.8,
+   "align": "left",
+   "w": 347.6,
+   "size": 10,
+   "label": "Peso sin carga"
+  },
+  "a25": {
+   "type": "chars",
+   "page": 0,
+   "y": 432.9,
+   "xs": [
+    394.1,
+    412.2,
+    429.35,
+    446.5,
+    463.65,
+    480.85,
+    497.9,
+    514.45
+   ],
+   "w": 16,
+   "size": 10,
+   "label": "S2: licencia dueño (8 casillas)"
+  },
+  "a26": {
+   "page": 0,
+   "x": 525.9,
+   "y": 432.8,
+   "align": "left",
+   "w": 59.1,
+   "size": 10,
+   "label": "S2: estado licencia dueño"
+  },
+  "a24": {
+   "page": 0,
+   "x": 24.8,
+   "y": 432.3,
+   "align": "left",
+   "w": 356.7,
+   "size": 10,
+   "label": "S2: dueño (nombre completo)"
+  },
+  "a30": {
+   "type": "chars",
+   "page": 0,
+   "y": 403.2,
+   "xs": [
+    394.1,
+    412.2,
+    429.35,
+    446.5,
+    463.65,
+    480.85,
+    497.9,
+    514.45
+   ],
+   "w": 16,
+   "size": 10,
+   "label": "S2: licencia co-dueño"
+  },
+  "a31": {
+   "page": 0,
+   "x": 526.5,
+   "y": 403.1,
+   "align": "left",
+   "w": 58.5,
+   "size": 10,
+   "label": "S2: estado licencia co-dueño"
+  },
+  "a29": {
+   "page": 0,
+   "x": 59.4,
+   "y": 402.9,
+   "align": "left",
+   "w": 322.1,
+   "size": 10,
+   "label": "S2: co-dueño (segundo comprador)"
+  },
+  "a35": {
+   "type": "chars",
+   "page": 0,
+   "y": 373.0,
+   "xs": [
+    394.1,
+    412.2,
+    429.35,
+    446.5,
+    463.65,
+    480.85,
+    497.9,
+    514.45
+   ],
+   "w": 16,
+   "size": 10,
+   "label": "S2: licencia tercer dueño"
+  },
+  "a34": {
+   "page": 0,
+   "x": 59.5,
+   "y": 372.6,
+   "align": "left",
+   "w": 322.0,
+   "size": 10,
+   "label": "S2: tercer dueño"
+  },
+  "a36": {
+   "page": 0,
+   "x": 526.2,
+   "y": 372.3,
+   "align": "left",
+   "w": 58.8,
+   "size": 10,
+   "label": "S2: estado licencia tercer dueño"
+  },
+  "a37": {
+   "page": 0,
+   "x": 24.8,
+   "y": 348.5,
+   "align": "left",
+   "w": 234.8,
+   "size": 10,
+   "label": "S2: domicilio"
+  },
+  "a41": {
+   "page": 0,
+   "x": 526.5,
+   "y": 348.5,
+   "align": "left",
+   "w": 58.5,
+   "size": 10,
+   "label": "S2: ZIP"
+  },
+  "a40": {
+   "page": 0,
+   "x": 473.1,
+   "y": 348.4,
+   "align": "left",
+   "w": 50.4,
+   "size": 10,
+   "label": "S2: estado"
+  },
+  "a38": {
+   "page": 0,
+   "x": 262.6,
+   "y": 348.0,
+   "align": "left",
+   "w": 60.3,
+   "size": 10,
+   "label": "S2: apt"
+  },
+  "a39": {
+   "page": 0,
+   "x": 325.9,
+   "y": 348.0,
+   "align": "left",
+   "w": 144.2,
+   "size": 10,
+   "label": "S2: ciudad"
+  },
+  "a42": {
+   "page": 0,
+   "x": 24.8,
+   "y": 324.9,
+   "align": "left",
+   "w": 359.9,
+   "size": 10,
+   "label": "S2: condado"
+  },
+  "a43": {
+   "page": 0,
+   "x": 387.7,
+   "y": 324.4,
+   "align": "left",
+   "w": 197.3,
+   "size": 10,
+   "label": "S2: número de equipo"
+  },
+  "a44": {
+   "page": 0,
+   "x": 24.8,
+   "y": 300.8,
+   "align": "left",
+   "w": 234.8,
+   "size": 10,
+   "label": "S2: dirección postal"
+  },
+  "a45": {
+   "page": 0,
+   "x": 262.6,
+   "y": 300.8,
+   "align": "left",
+   "w": 60.8,
+   "size": 10,
+   "label": "S2: apt postal"
+  },
+  "a48": {
+   "page": 0,
+   "x": 526.9,
+   "y": 300.8,
+   "align": "left",
+   "w": 58.1,
+   "size": 10,
+   "label": "S2: ZIP postal"
+  },
+  "a46": {
+   "page": 0,
+   "x": 326.4,
+   "y": 300.3,
+   "align": "left",
+   "w": 143.1,
+   "size": 10,
+   "label": "S2: ciudad postal"
+  },
+  "a47": {
+   "page": 0,
+   "x": 472.5,
+   "y": 300.3,
+   "align": "left",
+   "w": 51.4,
+   "size": 10,
+   "label": "S2: estado postal"
+  },
+  "a49": {
+   "page": 0,
+   "x": 24.8,
+   "y": 276.7,
+   "align": "left",
+   "w": 234.0,
+   "size": 10,
+   "label": "S2: dirección arrendatario"
+  },
+  "a50": {
+   "page": 0,
+   "x": 261.8,
+   "y": 276.4,
+   "align": "left",
+   "w": 61.8,
+   "size": 10,
+   "label": "S2: apt arrendatario"
+  },
+  "a51": {
+   "page": 0,
+   "x": 326.6,
+   "y": 276.1,
+   "align": "left",
+   "w": 142.9,
+   "size": 10,
+   "label": "S2: ciudad arrendatario"
+  },
+  "a52": {
+   "page": 0,
+   "x": 472.5,
+   "y": 276.1,
+   "align": "left",
+   "w": 51.7,
+   "size": 10,
+   "label": "S2: estado arrendatario"
+  },
+  "a53": {
+   "page": 0,
+   "x": 527.2,
+   "y": 276.1,
+   "align": "left",
+   "w": 57.8,
+   "size": 10,
+   "label": "S2: ZIP arrendatario"
+  },
+  "a56": {
+   "page": 0,
+   "x": 473.2,
+   "y": 253.2,
+   "align": "left",
+   "w": 51.0,
+   "size": 10,
+   "label": "S2: trailer coach: estado"
+  },
+  "a55": {
+   "page": 0,
+   "x": 326.6,
+   "y": 252.5,
+   "align": "left",
+   "w": 143.6,
+   "size": 10,
+   "label": "S2: trailer coach: ciudad"
+  },
+  "a57": {
+   "page": 0,
+   "x": 527.2,
+   "y": 252.5,
+   "align": "left",
+   "w": 57.8,
+   "size": 10,
+   "label": "S2: trailer coach: ZIP"
+  },
+  "a54": {
+   "page": 0,
+   "x": 24.8,
+   "y": 251.9,
+   "align": "left",
+   "w": 298.8,
+   "size": 10,
+   "label": "S2: trailer coach: dirección"
+  },
+  "a58": {
+   "page": 0,
+   "x": 24.8,
+   "y": 184.8,
+   "align": "left",
+   "w": 423.1,
+   "size": 10,
+   "label": "S3: legal owner (lienholder)"
+  },
+  "a59": {
+   "page": 0,
+   "x": 450.9,
+   "y": 184.5,
+   "align": "left",
+   "w": 134.1,
+   "size": 10,
+   "label": "S3: ELT #"
+  },
+  "a62": {
+   "page": 0,
+   "x": 326.6,
+   "y": 160.9,
+   "align": "left",
+   "w": 143.6,
+   "size": 10,
+   "label": "S3: ciudad"
+  },
+  "a64": {
+   "page": 0,
+   "x": 526.2,
+   "y": 160.9,
+   "align": "left",
+   "w": 58.8,
+   "size": 10,
+   "label": "S3: ZIP"
+  },
+  "a60": {
+   "page": 0,
+   "x": 24.8,
+   "y": 160.2,
+   "align": "left",
+   "w": 234.0,
+   "size": 10,
+   "label": "S3: dirección"
+  },
+  "a61": {
+   "page": 0,
+   "x": 261.8,
+   "y": 160.2,
+   "align": "left",
+   "w": 61.8,
+   "size": 10,
+   "label": "S3: apt"
+  },
+  "a63": {
+   "page": 0,
+   "x": 473.2,
+   "y": 160.2,
+   "align": "left",
+   "w": 50.0,
+   "size": 10,
+   "label": "S3: estado"
+  },
+  "a68": {
+   "page": 0,
+   "x": 473.2,
+   "y": 137.0,
+   "align": "left",
+   "w": 50.0,
+   "size": 10,
+   "label": "S3: estado postal"
+  },
+  "a67": {
+   "page": 0,
+   "x": 327.9,
+   "y": 136.7,
+   "align": "left",
+   "w": 142.3,
+   "size": 10,
+   "label": "S3: ciudad postal"
+  },
+  "a69": {
+   "page": 0,
+   "x": 526.2,
+   "y": 136.7,
+   "align": "left",
+   "w": 58.8,
+   "size": 10,
+   "label": "S3: ZIP postal"
+  },
+  "a65": {
+   "page": 0,
+   "x": 24.8,
+   "y": 136.4,
+   "align": "left",
+   "w": 234.0,
+   "size": 10,
+   "label": "S3: dirección postal"
+  },
+  "a66": {
+   "page": 0,
+   "x": 261.8,
+   "y": 136.0,
+   "align": "left",
+   "w": 63.1,
+   "size": 10,
+   "label": "S3: apt postal"
+  },
+  "a72": {
+   "type": "digits",
+   "page": 0,
+   "y": 90.1,
+   "xs": [
+    331.45,
+    352.2,
+    372.85,
+    399.25,
+    419.85,
+    440.4
+   ],
+   "w": 16,
+   "size": 10,
+   "label": "S4: odómetro (6 casillas, a la derecha)"
+  },
+  "a76": {
+   "page": 0,
+   "x": 149.2,
+   "y": 34.6,
+   "align": "left",
+   "w": 435.8,
+   "size": 10,
+   "label": "S4: explicación discrepancia del odómetro"
+  },
+  "a2@p2": {
+   "page": 1,
+   "x": 389.7,
+   "y": 726.8,
+   "align": "left",
+   "w": 81.7,
+   "size": 10,
+   "label": "Marca (hoja 2)"
+  },
+  "a3@p2": {
+   "page": 1,
+   "x": 474.4,
+   "y": 726.8,
+   "align": "left",
+   "w": 110.6,
+   "size": 10,
+   "label": "Año (hoja 2)"
+  },
+  "a1@p2": {
+   "type": "chars",
+   "page": 1,
+   "y": 726.4,
+   "xs": [
+    32.82,
+    50.47,
+    68.12,
+    85.76,
+    103.41,
+    121.06,
+    138.71,
+    156.35,
+    174.0,
+    191.65,
+    209.29,
+    226.94,
+    244.59,
+    262.24,
+    279.88,
+    297.53,
+    315.18
+   ],
+   "w": 17,
+   "size": 10,
+   "label": "VIN (hoja 2)"
+  },
+  "a78": {
+   "page": 1,
+   "x": 136.7,
+   "y": 672.1,
+   "align": "left",
+   "w": 78.2,
+   "size": 10,
+   "label": "S5: día entrada a CA"
+  },
+  "a77": {
+   "page": 1,
+   "x": 56.8,
+   "y": 671.4,
+   "align": "left",
+   "w": 76.9,
+   "size": 10,
+   "label": "S5: mes entrada a CA"
+  },
+  "a79": {
+   "page": 1,
+   "x": 217.9,
+   "y": 671.4,
+   "align": "left",
+   "w": 367.1,
+   "size": 10,
+   "label": "S5: año entrada a CA"
+  },
+  "a81": {
+   "page": 1,
+   "x": 56.2,
+   "y": 646.2,
+   "align": "left",
+   "w": 76.8,
+   "size": 10,
+   "label": "S5: mes primera operación en CA"
+  },
+  "a82": {
+   "page": 1,
+   "x": 136.0,
+   "y": 646.2,
+   "align": "left",
+   "w": 78.9,
+   "size": 10,
+   "label": "S5: día"
+  },
+  "a83": {
+   "page": 1,
+   "x": 217.9,
+   "y": 646.2,
+   "align": "left",
+   "w": 367.1,
+   "size": 10,
+   "label": "S5: año"
+  },
+  "a85": {
+   "page": 1,
+   "x": 135.0,
+   "y": 613.2,
+   "align": "left",
+   "w": 75.8,
+   "size": 10,
+   "label": "S5: día"
+  },
+  "a84": {
+   "page": 1,
+   "x": 56.8,
+   "y": 612.5,
+   "align": "left",
+   "w": 75.2,
+   "size": 10,
+   "label": "S5: mes residencia CA"
+  },
+  "a86": {
+   "page": 1,
+   "x": 213.8,
+   "y": 612.5,
+   "align": "left",
+   "w": 371.2,
+   "size": 10,
+   "label": "S5: año"
+  },
+  "a88": {
+   "page": 1,
+   "x": 56.8,
+   "y": 589.6,
+   "align": "left",
+   "w": 76.9,
+   "size": 10,
+   "label": "S5: mes de compra"
+  },
+  "a89": {
+   "page": 1,
+   "x": 136.7,
+   "y": 588.6,
+   "align": "left",
+   "w": 78.2,
+   "size": 10,
+   "label": "S5: día de compra"
+  },
+  "a90": {
+   "page": 1,
+   "x": 217.9,
+   "y": 588.3,
+   "align": "left",
+   "w": 367.1,
+   "size": 10,
+   "label": "S5: año de compra"
+  },
+  "a96": {
+   "page": 1,
+   "x": 260.4,
+   "y": 516.0,
+   "align": "left",
+   "w": 324.6,
+   "size": 10,
+   "label": "S6: precio de compra"
+  },
+  "a98": {
+   "page": 1,
+   "x": 304.3,
+   "y": 501.9,
+   "align": "left",
+   "w": 280.7,
+   "size": 10,
+   "label": "S6: valor de mercado (regalo)"
+  },
+  "a100": {
+   "page": 1,
+   "x": 343.5,
+   "y": 480.3,
+   "align": "left",
+   "w": 82.1,
+   "size": 10,
+   "label": "S6: valor (trade)"
+  },
+  "a105": {
+   "page": 1,
+   "x": 428.6,
+   "y": 479.3,
+   "align": "left",
+   "w": 156.4,
+   "size": 10,
+   "label": "S6: parentesco"
+  },
+  "a108": {
+   "page": 1,
+   "x": 64.7,
+   "y": 416.2,
+   "align": "left",
+   "w": 520.3,
+   "size": 10,
+   "label": "S6: costo construcción"
+  },
+  "a112": {
+   "page": 1,
+   "x": 166.2,
+   "y": 362.5,
+   "align": "left",
+   "w": 418.8,
+   "size": 10,
+   "label": "S7: sales tax pagado en otro estado"
+  },
+  "a124": {
+   "page": 1,
+   "x": 291.1,
+   "y": 204.8,
+   "align": "left",
+   "w": 293.9,
+   "size": 10,
+   "label": "S8: estado/país del cónyuge militar"
+  },
+  "a127": {
+   "page": 1,
+   "x": 477.4,
+   "y": 89.9,
+   "align": "left",
+   "w": 26.8,
+   "size": 10,
+   "label": "S9: lada 1"
+  },
+  "a126": {
+   "page": 1,
+   "x": 388.1,
+   "y": 89.5,
+   "align": "left",
+   "w": 86.3,
+   "size": 10,
+   "label": "S9: fecha 1"
+  },
+  "a125": {
+   "page": 1,
+   "x": 26.1,
+   "y": 88.9,
+   "align": "left",
+   "w": 359.0,
+   "size": 10,
+   "label": "S9: nombre impreso 1 (dueño)"
+  },
+  "a128": {
+   "page": 1,
+   "x": 507.2,
+   "y": 88.9,
+   "align": "left",
+   "w": 77.8,
+   "size": 10,
+   "label": "S9: teléfono 1"
+  },
+  "a130": {
+   "page": 1,
+   "x": 388.1,
+   "y": 66.3,
+   "align": "left",
+   "w": 86.6,
+   "size": 10,
+   "label": "S9: fecha 2"
+  },
+  "a131": {
+   "page": 1,
+   "x": 477.7,
+   "y": 66.0,
+   "align": "left",
+   "w": 27.1,
+   "size": 10,
+   "label": "S9: lada 2"
+  },
+  "a129": {
+   "page": 1,
+   "x": 25.4,
+   "y": 65.3,
+   "align": "left",
+   "w": 359.7,
+   "size": 10,
+   "label": "S9: nombre impreso 2 (co-dueño)"
+  },
+  "a132": {
+   "page": 1,
+   "x": 507.8,
+   "y": 64.7,
+   "align": "left",
+   "w": 77.2,
+   "size": 10,
+   "label": "S9: teléfono 2"
+  },
+  "a135": {
+   "page": 1,
+   "x": 478.1,
+   "y": 41.1,
+   "align": "left",
+   "w": 28.0,
+   "size": 10,
+   "label": "S9: lada 3"
+  },
+  "a133": {
+   "page": 1,
+   "x": 26.1,
+   "y": 40.6,
+   "align": "left",
+   "w": 359.6,
+   "size": 10,
+   "label": "S9: nombre impreso 3"
+  },
+  "a134": {
+   "page": 1,
+   "x": 388.7,
+   "y": 40.5,
+   "align": "left",
+   "w": 86.4,
+   "size": 10,
+   "label": "S9: fecha 3"
+  },
+  "a136": {
+   "page": 1,
+   "x": 509.1,
+   "y": 40.5,
+   "align": "left",
+   "w": 75.9,
+   "size": 10,
+   "label": "S9: teléfono 3"
+  }
+ }
+}

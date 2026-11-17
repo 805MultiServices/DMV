@@ -289,6 +289,21 @@
       styleFields(pdf, form, font);
       if (opts.flatten !== false) form.flatten();
     }
+    // Quitar de /Annots las referencias a objetos que ya no existen (p. ej. los botones
+    // "click to" que se borran con map.remove). Chrome/Edge (PDFium) al imprimir o guardar
+    // copian las páginas a un PDF nuevo y, si una referencia está rota, descartan TODAS las
+    // anotaciones de la hoja: los campos se ven en pantalla pero salen en blanco.
+    pdf.getPages().forEach((pg) => {
+      const annots = pg.node.Annots();
+      if (!annots) return;
+      const keep = [];
+      for (let k = 0; k < annots.size(); k++) {
+        const ref = annots.get(k);
+        const obj = pdf.context.lookup(ref);
+        if (obj instanceof PDFDict) keep.push(ref);
+      }
+      if (keep.length !== annots.size()) pg.node.set(PDFName.of("Annots"), pdf.context.obj(keep));
+    });
     // Si el MediaBox es más grande que lo que se ve (CropBox), igualarlos
     pdf.getPages().forEach((pg) => {
       const c = pg.getCropBox();

@@ -41,6 +41,7 @@
 
   try {
     let out;
+    let preimpreso = false;   // formas preimpresas (solo texto, sin plantilla): deben imprimirse al 100%
     if (docs.length) {
       if (!docs.every(valid)) throw new Error("Lista de documentos inválida: " + docs.join(", "));
       const parts = [];
@@ -49,6 +50,7 @@
         const sub = new URLSearchParams();
         for (const [k, v] of params) if (k.startsWith(pre)) sub.set(k.slice(pre.length), v);
         const { map, bytes } = await load(docs[i]);
+        if (map.mode === "overlay" && !map.template) preimpreso = true;
         const r = await DocFiller.buildPdf(bytes, map, sub, { flatten });
         if (r.log.length) console.warn(`Avisos ${docs[i]} (#${i + 1}):`, r.log);
         parts.push(r);
@@ -60,6 +62,7 @@
         return;
       }
       const { map, bytes } = await load(doc);
+      if (map.mode === "overlay" && !map.template) preimpreso = true;
       const r = await DocFiller.buildPdf(bytes, map, params, { flatten });
       if (r.log.length) console.warn("Avisos:", r.log);
       out = r.bytes;
@@ -69,6 +72,12 @@
     // Título del PDF = nombre del archivo (lo muestra la pestaña del visor)
     const titled = await PDFLib.PDFDocument.load(out);
     titled.setTitle(name.replace(/\.pdf$/, ""), { showInWindowTitleBar: true });
+    // Escala de impresión "Tamaño real" (100%) en vez de "Ajustar al área imprimible" (~96%), que mueve
+    // el texto sobre las formas preimpresas. Chrome/Edge y Acrobat la toman como escala por defecto.
+    // Automático en formas preimpresas (overlay-262); &escala=100 la fuerza en cualquier documento, &escala=ajustar la quita.
+    const escala = (params.get("escala") || "").toLowerCase();
+    if (escala === "100" || (preimpreso && escala !== "ajustar"))
+      titled.catalog.getOrCreateViewerPreferences().setPrintScaling(PDFLib.PrintScaling.None);
     out = await titled.save();
 
     const url = URL.createObjectURL(new Blob([out], { type: "application/pdf" }));

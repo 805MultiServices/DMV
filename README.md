@@ -58,6 +58,8 @@ Recuadros de explicación (`a35` del 101, sección G del 256): el texto sale cen
 
 Tipos de entrada en el mapa: texto (por defecto), `"type":"check"` (casilla), `"type":"chars"` (un carácter por casilla, p. ej. la licencia) y `"type":"choice"` (AND/OR).
 
+En `chars`, `"strip"` dice qué se quita antes de repartir las letras (regex; por defecto espacios y guiones). Con `"strip": ""` no se quita nada y cada espacio deja una casilla vacía (nombres, calles, ciudades). `"checkWhen": {"a32": "campo"}` marca una casilla cuando llega ese parámetro.
+
 ## Parámetros de `fill-101`
 
 | Param | Qué es |
@@ -235,6 +237,27 @@ Mismos parámetros que `gabodocs.ray.mx/fill-227` (que usa la REV. 8/2017; las s
 | `a89`–`a97` | Firmas de nuevos dueños: fecha, lada, teléfono (3 renglones) |
 
 Las casillas **AND/OR** entre nuevos dueños no están en el mapa: siempre quedan en blanco.
+
+## `fill-14` (DMV 14 REV. 11/2021, Notice of Change of Address)
+
+Solo las hojas 2 y 3 del PDF del DMV (sin instrucciones). Mismos parámetros que `gabodocs.ray.mx/fill-14`. Una letra por casilla; los espacios quedan como casilla vacía. Si un texto no cabe, se corta y sale un aviso en la consola.
+
+| Param | Qué es |
+|---|---|
+| `a1` `a3` `a4` | S1 apellido (20), nombre (9), inicial |
+| `a2` | S1 licencia / ID (8) |
+| `a5` | S1 fecha de nacimiento (`MM/DD/YYYY`; solo DL/ID) |
+| `a8` `a9` `a10` | S2 anterior: número (6), calle (24), apt (4) |
+| `a12` `a13` `a14` `a11` | S2 anterior: ciudad (24), estado, ZIP, condado (22) |
+| `a15` `a16` `a17` | S3 nuevo: número, calle, apt |
+| `a19` `a20` `a21` `a18` | S3 nuevo: ciudad, estado, ZIP, condado |
+| `a25`–`a31` | S4 dirección postal (si es distinta): número, calle/PO BOX, apt, ciudad, estado, ZIP, condado |
+| `a22` `a23` | S5 placa (8), VIN (17) |
+| `a24` | S10 fecha de firma |
+| `a32` / `a33` | Teléfono / correo para registro de votante (marcan "Add phone/email" solos) |
+
+La sección 4a (voto), 5 (2o y 3er vehículo), 6, 7, 8 y 9 se quedan en blanco para llenarse a mano.
+La plantilla se sacó del PDF del DMV con `qpdf --decrypt` + `qpdf --pages … 2-3`, y se le quitaron los botones Print / Clear Form.
 
 ## `fill-135` (REG 135 Bill of Sale, REV. 2/2007)
 

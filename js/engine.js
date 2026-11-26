@@ -172,9 +172,13 @@
 
         try {
           if (s.type === "chars") {
-            // Un carácter por casilla (p. ej. licencia de 8 casillas)
-            const chars = v.replace(/[\s-]/g, "").toUpperCase().split("");
-            names.forEach((n, i) => { if (chars[i]) find(n).setText(chars[i]); });
+            // Un carácter por casilla (p. ej. licencia de 8 casillas).
+            // "strip": qué quitar antes de repartir (regex). Por defecto espacios y guiones;
+            // "" no quita nada: cada espacio deja una casilla vacía (nombres, calles, ciudades).
+            const src = s.strip === "" ? v.replace(/\s+/g, " ") : v.replace(s.strip ? new RegExp(s.strip, "g") : /[\s-]/g, "");
+            const chars = src.toUpperCase().split("");
+            if (chars.length > names.length) log.push(`${key}: ${chars.length} caracteres, solo caben ${names.length}`);
+            names.forEach((n, i) => { if (chars[i] && chars[i] !== " ") find(n).setText(chars[i]); });
           } else if (s.type === "check") {
             if (truthy(v)) names.forEach((n) => find(n).check());
           } else if (s.type === "choice") {
@@ -201,6 +205,10 @@
             });
           }
         } catch (e) { log.push(`${key}: ${e.message}`); }
+      }
+      // "checkWhen": marca una casilla cuando llega un parámetro (p. ej. teléfono -> "Add phone number")
+      for (const [k, n] of Object.entries(map.checkWhen || {})) {
+        if (ok(get(k))) { const f = find(n); if (f) f.check(); }
       }
       // Botones de la plantilla (Print / Clear Form...) que no deben salir en el PDF final
       (map.remove || []).forEach((n) => { const f = find(n); if (f) form.removeField(f); });
